@@ -1,0 +1,337 @@
+/* 
+  info_for_reading_map.strings
+  cubik_xcode_part
+
+  Created by Yuliia Demura on 17/03/2021.
+  
+*/
+
+
+
+*********************************************************************************************
+										**** colors ****
+*********************************************************************************************
+
+colours:
+//https://donatbalipapp.medium.com/colours-maths-90346fb5abda#:~:text=From%20our%20R%2C%20G%20and,)%20%3D%20R%20%3D%200%2C212%20values.
+
+bits:
+//https://coderoad.ru/141525/%D0%A7%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B-%D0%BF%D0%BE%D0%B1%D0%B8%D1%82%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE-%D1%81%D0%B4%D0%B2%D0%B8%D0%B3%D0%B0-bit-shift-%D0%B8-%D0%BA%D0%B0%D0%BA-%D0%BE%D0%BD%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82
+
+
+bits oprations
+//https://code.tutsplus.com/ru/articles/understanding-bitwise-operators--active-11301
+
+
+*********************************************************************************************
+										**** error handling ****
+*********************************************************************************************
+
+//https://stackoverflow.com/questions/43326174/c-using-an-enum-to-error-handling
+example of error enum:
+
+enum ErrorNum : char{
+    NO_ERROR,
+    ERROR_DOING_FOO
+};
+
+ErrorNum foo()
+{
+    if (some_condition)
+        return NO_ERROR;
+    else
+        return ERROR_DOING_FOO;
+}
+
+
+error handling explanation: //https://akrzemi1.wordpress.com/2017/09/04/using-error-codes-effectively/
+
+
+
+
+*********************************************************************************************
+
+The map must be composed of only 4 possible characters: 0 for an empty space, 1 for a wall, 2 for an item and N,S,E or W for the player’s start position and spawning orientation.
+
+This is a simple valid map:
+
+111111
+100101
+102001
+1100N1
+111111
+
+111111\n100101\n102001\n1100N1\n111111
+
+
+◦ The map must be closed/surrounded by walls, if not the program must return an error.
+◦ Except for the map content, each type of element can be separated by one or more empty line(s).
+◦ Except for the map content which always has to be the last, each type of element can be set in any order in the file.
+◦ Except for the map, each type of information from an element can be separated by one or more space(s).
+◦ The map must be parsed as it looks like in the file. Spaces are a valid part of the map, and is up to you to handle. You must be able to parse any kind of map, as long as it respects the maps rules.
+
+Each element (except the map) firsts information is the type identifier (com- posed by one or two character(s)), followed by all specific informations for each object in a strict order such as :
+∗ Resolution:
+R 1920 1080
+· identifier: R · x render size · y render size
+∗ North texture:
+         NO ./path_to_the_north_texture
+· identifier: NO
+· path to the north texure ∗ South texture:
+         SO ./path_to_the_south_texture
+· identifier: SO
+· path to the south texure ∗ West texture:
+         WE ./path_to_the_west_texture
+· identifier: WE
+· path to the west texure ∗ East texture:
+         EA ./path_to_the_east_texture
+· identifier: EA
+· path to the east texure ∗ Sprite texture:
+         S ./path_to_the_sprite_texture
+· identifier: S
+· path to the sprite texure ∗ Floor color:
+F 220,100,0
+· identifier: F
+· R,G,B colors in range [0,255]: 0, 255, 255
+
+
+∗ Ceilling color:
+C 225,30,0
+· identifier: C
+· R,G,B colors in range [0,255]: 0, 255, 255
+◦ Example of the mandatory part with a minimalist .cub scene:
+R 1920 1080
+NO ./path_to_the_north_texture
+SO ./path_to_the_south_texture
+WE ./path_to_the_west_texture
+EA ./path_to_the_east_texture
+S ./path_to_the_sprite_texture
+F 220,100,0
+C 225,30,0
+
+
+R 1920 1080
+NO ./path_to_the_north_texture
+SO ./path_to_the_south_texture
+WE ./path_to_the_west_texture
+EA ./path_to_the_east_texture
+
+S ./path_to_the_sprite_texture
+F 220,100,0
+C 225,30,0
+
+        1111111111111111111111111
+        1000000000110000000000001
+        1011000001110000002000001
+        1001000000000000000000001
+111111111011000001110000000000001
+100000000011000001110111111111111
+11110111111111011100000010001
+11110111111111011101010010001
+11000000110101011100000010001
+10002000000000001100000010001
+10000000000000001101010010001
+11000001110101011111011110"N"0111
+11110111 1110101 101111010001
+11111111 1111111 111111111111
+
+111111
+100101
+102001
+1100N1
+111111
+
+/ ./test_result "/Users/ydemura/Desktop/KUBIK/test_map.cub"
+
+//"111111/n100101/n102001/n1100N1/n111111"
+
+
+//R 1920 1080
+//NO ./path_to_the_north_texture
+//SO ./path_to_the_south_texture
+//WE ./path_to_the_west_texture
+//EA ./path_to_the_east_texture
+//
+//S ./path_to_the_sprite_texture
+//F 220,100,0
+//C 225,30,0
+//
+//        1111111111111111111111111
+//        1000000000110000000000001
+//        1011000001110000002000001
+//        1001000000000000000000001
+//111111111011000001110000000000001
+//100000000011000001110111111111111
+//11110111111111011100000010001
+//11110111111111011101010010001
+//11000000110101011100000010001
+//10002000000000001100000010001
+//10000000000000001101010010001
+//11000001110101011111011110"N"0111
+//11110111 1110101 101111010001
+//11111111 1111111 111111111111
+
+
+◦ If any misconfiguration of any kind is encountered in the file, the program must exit properly and return "Error\n" followed by an explicit error message of your choice.
+
+
+
+links
+// http://mycpp.ru/cpp/scpp/cppd_union.htm#:~:text=%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%20C%2FC%2B%2B%20%2D%20union&text=%D0%9E%D0%B1%D1%8A%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%E2%80%94%20%D1%8D%D1%82%D0%BE%20%D1%82%D0%B8%D0%BF%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0%2C%20%D0%B2,%D1%87%D0%BB%D0%B5%D0%BD%D1%8B%20%D0%BE%D0%B1%D1%8A%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8B%20%D0%BF%D0%BE%20%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E.
+
+
+// http://wiki.libsdl.org/SDL_Event
+// https://lodev.org
+//https://lodev.org/cgtutor/raycasting.html - main tuto
+
+//https://harm-smits.github.io/42docs/projects/cub3d more main tuto
+
+
+//tuto fron Olga
+//https://permadi.com/1996/05/ray-casting-tutorial-1/#INTRODUCTION
+
+//https://www.geeksforgeeks.org/difference-structure-union-c/#:~:text=A%20structure%20is%20a%20user,used%20to%20represent%20a%20record.&text=A%20union%20is%20a%20special,in%20the%20same%20memory%20location.
+
+
+
+// tasks:
+read about vectors T_T multiplication
+//https://mathinsight.org/vector_introduction#:~:text=A%20vector%20is%20an%20object,its%20tail%20to%20its%20head.
+
+
+//
+//  read_input_file.c
+//  cubik_VScode
+//
+//  Created by Yuliia Demura on 17/03/2021.
+//
+
+//#include "header_all.h"
+
+//t_tile    *realloc_struct_size(t_tile *tile, int len)
+//{
+//    int i;
+//    char *new_str;
+//    i = 0;
+//    new_str = malloc((len + 1) * sizeof(char));
+//    while (str[i] != '\0' && i < len)
+//    {
+//        new_str[i] = str[i];
+//        i++;
+//    }
+//    free (str);
+//    new_str[len] = '\0';
+//    return (new_str);
+//}
+
+//info about malloc structs: https://www.delftstack.com/howto/c/c-array-of-structs/#:~:text=The%20memory%20can%20be%20allocated,a%20pointer%20of%20type%20void%20.
+
+//another: https://www.delftstack.com/howto/c/c-array-of-structs/#:~:text=The%20memory%20can%20be%20allocated,a%20pointer%20of%20type%20void%20.
+
+//more malloc+struct https://www.delftstack.com/howto/c/c-malloc-struct/
+
+
+//nice lecture: https://www.cs.utexas.edu/users/fussell/courses/cs310h/lectures/Lecture_18-310h.pdf
+
+// info on struct: https://www.geeksforgeeks.org/structures-c/
+//t_tile *realloc_str_first_order(t_tile *old_tile, int len)
+//{
+//    int i;
+//    t_tile tile;
+//
+//    i = 0;
+//    tile = malloc(len) * sizeof(t_tile);
+//}
+//EXAMPLE
+//typedef struct s_line
+//{
+//    char* addr;
+//    char* inst;
+//} t_line;
+//int number_of_members = 2;
+//
+//t_line* array = malloc(number_of_members * sizeof(*array));
+
+//int    read_map(int fd, t_game_state *gstate)
+//{
+//    int number_of_members = gstate->map_size.len_rows * gstate->map_size.len_rows;
+//
+//    t_tile *sub_array = malloc(number_of_members * sizeof(t_tile));
+//
+//
+//
+//
+//    int res;
+//    char c;
+//    int row_len;
+//    int col_len;
+//    int row_counter;
+//    int col_counter;
+//    int index = 0;;
+//
+//    res = 1;
+//    c = '\0';
+//    row_len = 2;
+//    col_len = 2;
+//    row_counter = 0;
+//    col_counter = 0;
+//
+//    while (res > 0)
+//    {
+//        index = 0;
+//        col_counter = 0;
+//        number_of_members = 2;
+//        while (c != '\n' && res > 0)
+//        {
+//            res = (int)read(fd, &c, 1);
+//            col_counter++;
+////            sub_array[index] = tile_wall;
+//            index++;
+//            if (col_counter == number_of_members)
+//            {
+//                number_of_members *= 2;
+////                sub_array = sub_array_realloc(sub_array, number_of_members);
+//            }
+//        }
+//        row_counter++;
+//        c = '\0';
+//    }
+//
+//
+//
+//    return (0);
+//}
+
+
+
+
+
+//int    read_first_time(int fd, t_cube *cube)
+//{
+//    int res_read;
+//    char c;
+//
+//    res_read = 1;
+//    c = '\0';
+//
+//    cube->read_res.col = 0;
+//
+//    while (res_read > 0)
+//    {
+//        while (c != '\n')
+//        {
+//            res_read = (int)read(fd, &c, 1);
+//            if (res_read < 0)
+//            {
+//                write_str("the read f-on is f*cked");
+//                return (-1);
+//            }
+//            cube->read_res.col = cube->read_res.col + 1;
+//        }
+//        cube->read_res.row++;
+//        c = '\0';
+//    }
+//    printf("counted col: %i\ncounted row: %i\n", cube->read_res.col, cube->read_res.row);
+//
+//    return (0);
+//}
