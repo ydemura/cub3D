@@ -34,7 +34,7 @@ $(LIBMLX_FILE):
 	gcc $(FLAGS) -c -o $@ $< -I ./src_includes -I ./src_includes/libft_for_cube -I ./src_includes/algoritm -I ./mlx/mlx.h
 
 $(LIBFT):
-	$(MAKE) -C src_includes/src_includes/libft_for_cube
+	$(MAKE) -C /src_includes/libft_for_cube
 
 clean:
 	rm -f $(OBJ) $(LIBMLX_FILE)
