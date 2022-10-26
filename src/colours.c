@@ -9,7 +9,7 @@
 #include "colours.h"
 #include "libft.h"
 
-int		str_roller(char *str, t_header_info *head)
+int		str_roller(char *str, t_data *data)
 {
 	int i;
 
@@ -21,11 +21,11 @@ int		str_roller(char *str, t_header_info *head)
 	if (str[i] == ',')
 		i++;
 	else
-		head->errors_parsing = ERR_COLOUR;
+		data->err = ERR_COLOUR;
 	return (i);
 }
 
-void	tail_check(char *str, t_header_info *head)
+void	tail_check(char *str, t_data *data)
 {
 	while (*str != '\0')
     {
@@ -33,13 +33,13 @@ void	tail_check(char *str, t_header_info *head)
             str++;
         else
 		{
-			head->errors_parsing = ERR_COLOUR;
+			data->err = ERR_COLOUR;
 			return ;
 		}    
     }
 }
 
-int color_maker(int red,  int green,  int blue, t_header_info *head)
+int color_maker(int red,  int green,  int blue, t_data *data)
 {
 	int transperant;
 
@@ -48,37 +48,37 @@ int color_maker(int red,  int green,  int blue, t_header_info *head)
         && (blue >= 0 && blue <= 255))
 		return (transperant << 24 | red << 16 | green << 8 | blue);
 	else
-		head->errors_parsing = ERR_COLOUR;
+		data->err = ERR_COLOUR;
 	return (-1);
 }
 
-int 	number_collection(char *str, t_header_info *head, char c, int *n_array)
+int 	number_collection(char *str, t_data *data, char c, int *n_array)
 {
 	while (*str == ' ' || *str == '\t')
 		str++;
 	if (ft_isdigit(*str) == 1)
 		n_array[0] = ft_atoi(str);
-	str += str_roller(str, head);
+	str += str_roller(str, data);
 	while (*str == ' ' || *str == '\t')
 		str++;
 	if (ft_isdigit(*str) == 1)
 		n_array[1] = ft_atoi(str);
-	str += str_roller(str, head);
+	str += str_roller(str, data);
 	while (*str == ' ' || *str == '\t')
 		str++;
 	if (ft_isdigit(*str) == 1)
 		n_array[2] = ft_atoi(str);
 	while (ft_isdigit(*str) == 1)
 		str++;
-	tail_check(str, head);
+	tail_check(str, data);
 	if (c == 'C')
-		head->rgb_ceiling = color_maker(n_array[0], n_array[1], n_array[2], head);
+		data->rgb_ceiling = color_maker(n_array[0], n_array[1], n_array[2], data);
 	if (c == 'F')
-		head->rgb_floor = color_maker(n_array[0], n_array[1], n_array[2], head);
+		data->rgb_floor = color_maker(n_array[0], n_array[1], n_array[2], data);
 	return (0);
 }
 
-int color_check_collection(t_header_info *head, char *str)
+int color_check_collection(t_data *data, char *str)
 {
     int n_array[3];
     int *ptr_array;
@@ -86,19 +86,19 @@ int color_check_collection(t_header_info *head, char *str)
     
 	if ( *str == 'C' && (*(str + 1) == ' ' || *(str + 1) == '\t'))
 	{
-		number_collection(str + 1, head, 'C', ptr_array);
-		if (head->errors_parsing == NO_ERROR)
-			head->flags.flag_c++;
+		number_collection(str + 1, data, 'C', ptr_array);
+		if (data->err == NO_ERROR)
+			data->flags.flag_c++;
 	}
 	else if ( *str == 'F' && (*(str + 1) == ' ' || *(str + 1) == '\t'))
 	{
-		number_collection(str + 1, head, 'F', ptr_array);
-		if (head->errors_parsing == NO_ERROR)
-			head->flags.flag_f++;
+		number_collection(str + 1, data, 'F', ptr_array);
+		if (data->err == NO_ERROR)
+			data->flags.flag_f++;
 	}
 	else
-		head->errors_parsing = ERR_ELEMENT_IDENTIFIER;
-	if (head->errors_parsing == NO_ERROR)
+		data->err = ERR_ELEMENT_IDENTIFIER;
+	if (data->err == NO_ERROR)
 		return (0);
 	else
 		return (1);

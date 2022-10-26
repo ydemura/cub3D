@@ -18,8 +18,6 @@ int find_kind_structure(char c, t_tile *tile)
         tile->kind = KIND_FLOOR;
     else if (c == '1')
         tile->kind = KIND_WALL;
-//    else if (c == '2')
-//        tile->kind = KIND_OBJECT;
     else if (c == ' ')
         tile->kind = KIND_EMPTY;
     else
@@ -84,6 +82,8 @@ int    classify_tiles(t_game_state *gstate, char c, t_tile *tile)
     return (0);
 }
 
+//this need to be changed in 2d array
+
 int        read_map(int fd, t_game_state *gstate) //t_game_state *gstate, int fd
 {
     t_tile tile;
@@ -106,7 +106,7 @@ int        read_map(int fd, t_game_state *gstate) //t_game_state *gstate, int fd
                 classify_tiles(gstate, c, &tile);
         }
         else
-            return (find_if_error_is_identifier(c, &gstate->head));
+            return (find_if_error_is_identifier(c, &gstate->data));
     }
     return (0);
 }

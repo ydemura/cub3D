@@ -10,6 +10,16 @@
 #define gnl_h
 
 #include "libft.h"
+#include "error_handling.h"
+
+typedef struct s_gnl
+{
+	int		res;
+	char	*temp;
+	int		len;
+	int		conter;
+	char	c;
+}				t_gnl;
 
 int		exam_get_next_line(int fd, char **line);
 

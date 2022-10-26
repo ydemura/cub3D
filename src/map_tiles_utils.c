@@ -8,6 +8,38 @@
 
 #include "map_tiles_utils.h"
 
+int	is_maze_number(char c)
+{
+	if (c == '0' || c == '1')
+		return (TRU);
+	else
+		return (FLS);
+}
+
+int	is_map_char(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (TRU);
+	else
+		return (FLS);
+}
+
+int	is_maze_space(char c)
+{
+	if (c == 32 || (c >= 8 && c <= 14))
+		return (TRU);
+	else
+		return (FLS);
+}
+
+int	is_maze_player(char c, char next)
+{
+	if (c == 'N' && next != 'O')
+		return (TRU);
+	else
+		return (FLS);
+}
+
 static int     index_of_tile(t_map_size map, int row, int col)
 {
 	return (row * map.len_cols + col);
@@ -29,14 +61,14 @@ void    set_tile(t_game_state *gstate, t_tile tile)
 	gstate->tiles[i] = tile;
 }
 
-int find_if_error_is_identifier(char c, t_header_info *head)
+int find_if_error_is_identifier(char c, t_data *head)
 {
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == 'F'|| c == 'C' || c == 'R')
 	{
 		if (head->flags.all_flags_collected == 1)
-			head->errors_parsing = ERR_DUPLICATE_ELEMENT;
+			head->err = ERR_DUPLICATE_ELEMENT;
 		else
-			head->errors_parsing = ERR_INCOMPLETE_INFORMATION;
+			head->err = ERR_INCOMPLETE_INFORMATION;
 	}
 	return (0);
 }

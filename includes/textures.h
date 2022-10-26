@@ -9,8 +9,8 @@
 #ifndef textures_h
 #define textures_h
 
-#include "initiate_struct.h"
+#include "initiate_data.h"
 
-int    error_check_str_and_collect_path(char *s, t_header_info *head);
+int    error_check_str_and_collect_path(char *s, t_data *data);
 
 #endif /* textures_h */

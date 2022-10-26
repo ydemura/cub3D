@@ -10,7 +10,7 @@
 #define form_gamestate_h
 
 #include "error_handling.h"
-#include "initiate_struct.h"
+#include "initiate_data.h"
 #include "initiate_map_size.h"
 
 typedef struct  s_player_info
@@ -32,10 +32,13 @@ typedef struct         s_tile
 
 typedef struct  s_game_state
 {
-	t_map_size   map_size;
-	t_tile      *tiles;
-	t_header_info head;
+	t_map_size	map_size;
+	t_data		data;
+	int			**map;
 	t_player_info p_info;
+	
+	//wont use
+	t_tile      *tiles;
 	
 }               t_game_state;
 

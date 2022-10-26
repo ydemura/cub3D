@@ -9,8 +9,8 @@
 #ifndef resolution_h
 #define resolution_h
 
-#include "initiate_struct.h"
+#include "initiate_data.h"
 
-int     collect_resolution(t_header_info *head, char *str);
+int     collect_resolution(t_data *data, char *str);
 
 #endif /* resolution_h */

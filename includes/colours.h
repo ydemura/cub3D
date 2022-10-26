@@ -9,8 +9,8 @@
 #ifndef colours_h
 #define colours_h
 
-#include "initiate_struct.h"
+#include "initiate_data.h"
 
-int color_check_collection(t_header_info *head, char *str);
+int color_check_collection(t_data *data, char *str);
 
 #endif /* colours_h */

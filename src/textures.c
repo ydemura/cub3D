@@ -11,7 +11,7 @@
 #include "resolution.h"
 #include "libft.h"
 
-char     *collect_path_new(char *str, t_header_info *head)
+char     *collect_path_new(char *str, t_data *data)
 {
     char *path_str = NULL;
 	int i;
@@ -24,48 +24,48 @@ char     *collect_path_new(char *str, t_header_info *head)
 		path_str = ft_strdup((const char *)str + i);
 	
 	if (path_str == NULL)
-		head->errors_parsing = ERR_MALLOC;
+		data->err = ERR_MALLOC;
 	
 	//cant check the tail of path as it can be part of path lel
     return (path_str);
 }
 
-void	find_s_identifier(char *str, t_header_info *head)
+void	find_s_identifier(char *str, t_data *data)
 {
 	if (*str == 'S' && *(str + 1) == 'O')
     {
-		head->texture_so_file = collect_path_new(str + 2, head);
-		head->flags.flag_s++;
+		data->texture_so_file = collect_path_new(str + 2, data);
+		data->flags.flag_s++;
     }
-	else if (*str == 'S')
-    {
-		head->texture_sprite_file = collect_path_new(str + 1, head);
-		head->flags.flag_sp++;
-    }
+//	else if (*str == 'S')
+//    {
+//		data->texture_sprite_file = collect_path_new(str + 1, data);
+//		data->flags.flag_sp++;
+//    }
 }
 
- void	find_identifier(char *str, t_header_info *head)
+ void	find_identifier(char *str, t_data *data)
 {
 	if (*str == 'N' && *(str + 1) == 'O')
     {
-		head->texture_no_file = collect_path_new(str + 2, head);
-		head->flags.flag_n++;
+		data->texture_no_file = collect_path_new(str + 2, data);
+		data->flags.flag_n++;
     }
 	else if (*str == 'W' && *(str + 1) == 'E')
     {
-		head->texture_we_file = collect_path_new(str + 2, head);
-		head->flags.flag_w++;
+		data->texture_we_file = collect_path_new(str + 2, data);
+		data->flags.flag_w++;
     }
 	else if (*str == 'E' && *(str + 1) == 'A')
     {
-		head->texture_ea_file = collect_path_new(str + 2, head);
-		head->flags.flag_e++;
+		data->texture_ea_file = collect_path_new(str + 2, data);
+		data->flags.flag_e++;
     }
 	else if (*str == 'S')
-		find_s_identifier(str, head);
+		find_s_identifier(str, data);
 }
 
-int    error_check_str_and_collect_path(char *s, t_header_info *head)
+int    error_check_str_and_collect_path(char *s, t_data *data)
 {
     int i;
     
@@ -76,17 +76,17 @@ int    error_check_str_and_collect_path(char *s, t_header_info *head)
 	else if (s[i] == 'S')
 		i++;
 	else
-		return (head->errors_parsing = ERR_ELEMENT_IDENTIFIER);
+		return (data->err = ERR_ELEMENT_IDENTIFIER);
 	if (s[i] == ' ' || s[i] == '\t')
 	{
 		while (s[i] == ' ' || s[i] == '\t')
 			i++;
 	}
 	else
-		return (head->errors_parsing = ERR_ELEMENT);
+		return (data->err = ERR_ELEMENT);
 	if (s[i] == '.' && s[i + 1] == '/')
-		find_identifier(s, head);
+		find_identifier(s, data);
 	else
-		return (head->errors_parsing = ERR_ELEMENT_IDENTIFIER);
+		return (data->err = ERR_ELEMENT_IDENTIFIER);
 	return (0);
 }

@@ -9,7 +9,7 @@
 #include "resolution.h"
 #include "libft.h"
 
-int space_skipper(t_header_info *head, char *str)
+int space_skipper(t_data *data, char *str)
 {
     int i;
 
@@ -20,29 +20,29 @@ int space_skipper(t_header_info *head, char *str)
             i++;
     }
     else
-        return (head->errors_parsing = ERR_RESOLUTION);
+        return (data->err = ERR_RESOLUTION);
     return (i);
 }
 
-int        get_number_for_x_and_y(char *str, t_header_info *head)
+int        get_number_for_x_and_y(char *str, t_data *data)
 {
     int i;
     int check_space;
 
     i = 0;
-    check_space = space_skipper(head, str);
-    if (head->errors_parsing == ERR_RESOLUTION)
+    check_space = space_skipper(data, str);
+    if (data->err == ERR_RESOLUTION)
         return (-1);
     else
         i = i + check_space;
-    if (head->x_render_size == 0)
-        head->x_render_size = ft_atoi(str);
+    if (data->x_render_size == 0)
+        data->x_render_size = ft_atoi(str);
     else
-        head->y_render_size = ft_atoi(str);
+        data->y_render_size = ft_atoi(str);
     
-    if (head->x_render_size < 0 || head->y_render_size < 0)
+    if (data->x_render_size < 0 || data->y_render_size < 0)
     {
-        head->errors_parsing = ERR_RESOLUTION;
+        data->err = ERR_RESOLUTION;
         return (-1);
     }
     while (ft_isalnum(str[i]))
@@ -50,17 +50,17 @@ int        get_number_for_x_and_y(char *str, t_header_info *head)
     return (i);
 }
 
-int     collect_resolution(t_header_info *head, char *str)
+int     collect_resolution(t_data *data, char *str)
 {
     int roll_str_find_resolution_number;
 
     roll_str_find_resolution_number = 0;
-    roll_str_find_resolution_number = get_number_for_x_and_y(str, head);
+    roll_str_find_resolution_number = get_number_for_x_and_y(str, data);
     if (roll_str_find_resolution_number == -1)
         return (1);
     else
         str = str + roll_str_find_resolution_number;
-    roll_str_find_resolution_number = get_number_for_x_and_y(str, head);
+    roll_str_find_resolution_number = get_number_for_x_and_y(str, data);
     if (roll_str_find_resolution_number == -1)
         return (1);
     else
@@ -70,9 +70,9 @@ int     collect_resolution(t_header_info *head, char *str)
         if (*str == ' ' || *str == '\t')
             str++;
         else
-            return (head->errors_parsing = ERR_RESOLUTION);
+            return (data->err = ERR_RESOLUTION);
     }
-    if (head->y_render_size <= 0 || head->x_render_size <= 0)
-        return (head->errors_parsing = ERR_RESOLUTION);
+    if (data->y_render_size <= 0 || data->x_render_size <= 0)
+        return (data->err = ERR_RESOLUTION);
     return (0);
 }

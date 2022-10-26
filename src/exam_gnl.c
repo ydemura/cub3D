@@ -6,7 +6,7 @@
 //  Copyright © 2021 Yuliia Demura. All rights reserved.
 //
 
-//#include "header_all.h"
+#include "gnl.h"
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -16,6 +16,8 @@ char *m_realloc(char *str, int len)
 	char *new_str;
 	i = 0;
 	new_str = malloc((len + 1) * sizeof(char));
+	if (new_str == NULL)
+		error_message_exit(ERR_MALLOC);
 	while (str[i] != '\0' && i < len)
 	{
 		new_str[i] = str[i];
@@ -26,37 +28,41 @@ char *m_realloc(char *str, int len)
 	return (new_str);
 }
 
+void	initiate_gnl_struct(t_gnl *gnl)
+{
+	gnl->res = 1;
+	gnl->len = 10;
+	gnl->conter = 0;
+	gnl->temp = malloc((gnl->len + 1) * sizeof(char));
+	if (gnl->temp == NULL)
+		error_message_exit(ERR_MALLOC);
+	gnl->c = '\0';
+	gnl->temp[gnl->len] = '\0';
+}
+
 int		exam_get_next_line(int fd, char **line)
 {
-	*line = NULL;
-	int res = 1;
-	char *temp;
-	int len = 10;
-	int conter = 0;
-	temp = malloc((len + 1) * sizeof(char));
-	char c;
-	c = '\0';
-	temp[len] = '\0';
+	t_gnl gnl;
 
-	if (!line)
-		return (-1);
-	while (c != '\n' && res != 0)
+	*line = NULL;
+	initiate_gnl_struct(&gnl);
+	while (gnl.c != '\n' && gnl.res != 0)
 	{
-		res = (int)read(fd, &c, 1);
-		if (*temp == '\0' && c == '\n')
-			return (res);
-		if (res == -1)
-			return (-1);
-		temp[conter] = c;
-		conter++;
-		if (conter == len)
+		gnl.res = (int)read(fd, &gnl.c, 1);
+		if (gnl.res == -1)
+			error_message_exit(ERR_READ);
+		else if (*gnl.temp == '\0' && gnl.c == '\n')
+			return (gnl.res);
+		gnl.temp[gnl.conter] = gnl.c;
+		gnl.conter++;
+		if (gnl.conter == gnl.len)
 		{
-			len = len * 2;
-			temp = m_realloc(temp, len);
+			gnl.len = gnl.len * 2;
+			gnl.temp = m_realloc(gnl.temp, gnl.len);
 		}
 	}
-	temp = m_realloc(temp, conter);
-	temp[conter - 1] = '\0';
-	*line = temp;
-	return (res);
+	gnl.temp = m_realloc(gnl.temp, gnl.conter);
+	gnl.temp[gnl.conter - 1] = '\0';
+	*line = gnl.temp;
+	return (gnl.res);
 }

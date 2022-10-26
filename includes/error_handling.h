@@ -9,6 +9,12 @@
 #ifndef error_handling_h
 #define error_handling_h
 
+typedef enum e_boolean
+{
+	TRU = 1,
+	FLS = 0
+}			t_boolean;
+
 typedef enum     e_error_handling
 {
 	NO_ERROR = 0,
@@ -29,5 +35,6 @@ typedef enum     e_error_handling
 }                t_error_handling;
 
 int 	error_handling(t_error_handling err);
+void	error_message_exit(t_error_handling err);
 
 #endif /* error_handling_h */
