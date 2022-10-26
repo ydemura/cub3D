@@ -9,84 +9,90 @@
 #include "textures.h"
 #include "colours.h"
 #include "resolution.h"
+#include "map_tiles_utils.h"
+#include "error_handling.h"
 #include "libft.h"
+#include <fcntl.h>
 
-char     *collect_path_new(char *str, t_data *data)
+int	str_cmpr_till_n(const char *str, const char *example, int n)
+{
+	if (!str)
+		return (FLS);
+	while (*str != '\0' && n > 0 && *example != '\0')
+	{
+		if (*example == *str)
+		{
+			example++;
+			str++;
+		}
+		else
+			return (FLS);
+		n--;
+	}
+	return (TRU);
+}
+
+int		collect_path_open_fd(char *str)
 {
     char *path_str = NULL;
 	int i;
+	int fd;
 	
 	i = 0;
-	
-	while (str[i] == ' ' || str[i] == '\t')
+	while (is_maze_space(str[i]))
 		i++;
-	if (str[i] == '.' && str[i + 1] == '/')
-		path_str = ft_strdup((const char *)str + i);
+	fd = open(str + i, O_RDONLY);
+	if (fd < 0)
+	{
+		fd = 1; // for test purpose as I dont have textures!
+		//error_message_exit(ERR_OPEN); -- UNCOMMENT later
+	}
+	// what if texture files are same and if I open opened file what will be/?
 	
-	if (path_str == NULL)
-		data->err = ERR_MALLOC;
-	
-	//cant check the tail of path as it can be part of path lel
-    return (path_str);
-}
-
-void	find_s_identifier(char *str, t_data *data)
-{
-	if (*str == 'S' && *(str + 1) == 'O')
-    {
-		data->texture_so_file = collect_path_new(str + 2, data);
-		data->flags.flag_s++;
-    }
-//	else if (*str == 'S')
-//    {
-//		data->texture_sprite_file = collect_path_new(str + 1, data);
-//		data->flags.flag_sp++;
-//    }
+    return (fd);
 }
 
  void	find_identifier(char *str, t_data *data)
 {
-	if (*str == 'N' && *(str + 1) == 'O')
+	if (str_cmpr_till_n(str, "NO", 2))
     {
-		data->texture_no_file = collect_path_new(str + 2, data);
+		data->fd_no = collect_path_open_fd(str + 2);
 		data->flags.flag_n++;
     }
-	else if (*str == 'W' && *(str + 1) == 'E')
+	else if (str_cmpr_till_n(str, "WE", 2))
     {
-		data->texture_we_file = collect_path_new(str + 2, data);
+		data->fd_we = collect_path_open_fd(str + 2);
 		data->flags.flag_w++;
     }
-	else if (*str == 'E' && *(str + 1) == 'A')
+	else if (str_cmpr_till_n(str, "EA", 2))
     {
-		data->texture_ea_file = collect_path_new(str + 2, data);
+		data->fd_ea = collect_path_open_fd(str + 2);
 		data->flags.flag_e++;
     }
-	else if (*str == 'S')
-		find_s_identifier(str, data);
+	else if (str_cmpr_till_n(str, "SO", 2))
+	{
+		data->fd_so = collect_path_open_fd(str + 2);
+		data->flags.flag_s++;
+	}
 }
 
-int    error_check_str_and_collect_path(char *s, t_data *data)
+int    error_check_collect_textures(char *str, t_data *data)
 {
     int i;
     
     i = 0;
-	if ((s[i] == 'N' && s[i + 1] == 'O') || (s[i] == 'W' && s[i + 1] == 'E') ||
-        (s[i] == 'E' && s[i + 1] == 'A') || (s[i] == 'S' && s[i + 1] == 'O'))
+	if (str_cmpr_till_n(str, "NO", 2) || str_cmpr_till_n(str, "WE", 2)
+			|| str_cmpr_till_n(str, "EA", 2) || str_cmpr_till_n(str, "SO", 2))
 		i += 2;
-	else if (s[i] == 'S')
+	else
+		error_message_exit(ERR_ELEMENT);
+	if (is_maze_space(str[i]) == FLS)
+		error_message_exit(ERR_ELEMENT);
+	while (is_maze_space(str[i]) == TRU)
 		i++;
+	if (str_cmpr_till_n(str + i, "./", 2))
+		find_identifier(str, data);
 	else
-		return (data->err = ERR_ELEMENT_IDENTIFIER);
-	if (s[i] == ' ' || s[i] == '\t')
-	{
-		while (s[i] == ' ' || s[i] == '\t')
-			i++;
-	}
-	else
-		return (data->err = ERR_ELEMENT);
-	if (s[i] == '.' && s[i + 1] == '/')
-		find_identifier(s, data);
-	else
-		return (data->err = ERR_ELEMENT_IDENTIFIER);
+		error_message_exit(ERR_ELEMENT_IDENTIFIER);
 	return (0);
 }

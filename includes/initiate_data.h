@@ -25,7 +25,6 @@ typedef struct  s_flags
 	int flag_s;
 	int flag_e;
 	int flag_w;
-	int flag_sp;
 	int flag_f;
 	int flag_c;
 	int flag_r;

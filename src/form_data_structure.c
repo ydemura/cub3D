@@ -35,13 +35,13 @@ int 	is_string_maze(char *str)
 
 void 	flag_checkup(t_data *data)
 {
-    if (data->flags.flag_w == 1 && data->flags.flag_sp == 1 && data->flags.flag_s == 1 &&
+    if (data->flags.flag_w == 1 && data->flags.flag_s == 1 &&
         data->flags.flag_e == 1 && data->flags.flag_n == 1 && data->flags.flag_f == 1 &&
         data->flags.flag_c == 1 && data->flags.flag_r == 1)
 	{
         data->flags.all_flags_collected = 1;
 	}
-	else if (data->flags.flag_w > 1 || data->flags.flag_sp > 1 || data->flags.flag_s > 1 ||
+	else if (data->flags.flag_w > 1 || data->flags.flag_s > 1 ||
              data->flags.flag_e > 1 || data->flags.flag_n > 1 || data->flags.flag_f > 1 ||
              data->flags.flag_c > 1 || data->flags.flag_r > 1)
 	{
@@ -58,7 +58,7 @@ int   string_handler(char *str, t_data *data)
 		str++;
 	if (*str == 'N' || *str == 'W' || *str == 'E' || *str == 'S')
 	{
-		if (error_check_str_and_collect_path(str, data) == 1)
+		if (error_check_collect_textures(str, data) == 1)
 			return (data->err);
 	}
 	else if (*str == 'R')

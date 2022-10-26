@@ -17,7 +17,6 @@ t_flags initiate_flags(void)
 	flags.flag_n = 0;
 	flags.flag_e = 0;
 	flags.flag_s = 0;
-	flags.flag_sp = 0;
 	flags.flag_w = 0;
 	flags.flag_f = 0;
 	flags.flag_c = 0;
