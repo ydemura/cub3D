@@ -64,6 +64,7 @@
 		32254ACB2909481F00F1FD97 /* ft_tolower.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A9E2909481F00F1FD97 /* ft_tolower.c */; };
 		32254ACC2909481F00F1FD97 /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A9F2909481F00F1FD97 /* get_next_line.c */; };
 		32254ACE29094AEB00F1FD97 /* check_map_borders.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254ACD29094AEB00F1FD97 /* check_map_borders.c */; };
+		32DC7BB0290AF9040067D21D /* boardersd.c in Sources */ = {isa = PBXBuildFile; fileRef = 32DC7BAF290AF9040067D21D /* boardersd.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -151,6 +152,8 @@
 		32254ACD29094AEB00F1FD97 /* check_map_borders.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = check_map_borders.c; path = cube3d_xcode/check_map_borders.c; sourceTree = SOURCE_ROOT; };
 		32254ACF29094AF700F1FD97 /* check_map_borders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = check_map_borders.h; path = cube3d_xcode/check_map_borders.h; sourceTree = SOURCE_ROOT; };
 		32254AD029095FF800F1FD97 /* map_basic.cub */ = {isa = PBXFileReference; lastKnownFileType = text; name = map_basic.cub; path = maps_variations/map_basic.cub; sourceTree = "<group>"; };
+		32DC7BAE290AF8F60067D21D /* boarders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = boarders.h; path = includes/boarders.h; sourceTree = SOURCE_ROOT; };
+		32DC7BAF290AF9040067D21D /* boardersd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = boardersd.c; path = src/boardersd.c; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +214,8 @@
 		322549C329081A2600F1FD97 /* map */ = {
 			isa = PBXGroup;
 			children = (
+				32DC7BAE290AF8F60067D21D /* boarders.h */,
+				32DC7BAF290AF9040067D21D /* boardersd.c */,
 				32254A552909474000F1FD97 /* map_tiles_utils.h */,
 				32254A69290947D100F1FD97 /* map_tiles_utils.c */,
 				32254A532909473200F1FD97 /* initiate_map_size.h */,
@@ -388,6 +393,7 @@
 				32254AC22909481F00F1FD97 /* ft_strlcpy.c in Sources */,
 				32254AA92909481F00F1FD97 /* ft_strnstr.c in Sources */,
 				32254AC82909481F00F1FD97 /* ft_strrchr.c in Sources */,
+				32DC7BB0290AF9040067D21D /* boardersd.c in Sources */,
 				32254AAC2909481F00F1FD97 /* ft_strtrim.c in Sources */,
 				32254AB42909481F00F1FD97 /* ft_split.c in Sources */,
 				32254AC72909481F00F1FD97 /* ft_memcmp.c in Sources */,

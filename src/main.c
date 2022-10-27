@@ -6,11 +6,14 @@
 //
 
 #include "form_gamestate.h"
+#include "boarders.h"
 
 int main(int argc, const char *argv[])
 {
 	t_game_state	game_state;
 
+	fake_2d_array();
+	
 	if (argc != 2)
 		error_message_exit(ERR_INCOMPLETE_INFORMATION);
     form_gamestate(&game_state, argv[1]);

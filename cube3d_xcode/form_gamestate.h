@@ -34,13 +34,34 @@ typedef struct  s_game_state
 {
 	t_map_size	map_size;
 	t_data		data;
-	int			**map;
 	t_player_info p_info;
 	
 	//wont use
 	t_tile      *tiles;
+	//new:
+	int			**map;
 	
 }               t_game_state;
+
+//typedef struct  s_parsing_result
+//{
+//	int	**array;
+//	int len_rows;
+//	int len_cols;
+//	unsigned int rgb_floor;
+//	unsigned int rgb_ceiling;
+//	int fd_no;
+//	int fd_so;
+//	int fd_ea;
+//	int fd_we;
+//	int x_player;
+//	int y_player;
+//	int x_player_view_direction;
+//	int y_player_view_direction;
+//	double x_camera;
+//	double y_camera;
+//}               t_parsing_result;
+
 
 int     form_gamestate(t_game_state *game_state, const char *file_name);
 

@@ -18,18 +18,14 @@ int     form_gamestate(t_game_state *game_state, const char *file_name)
 	t_data	data;
 	int fd;
 
-	game_state->map_size = initiate_map_size(file_name); ///checking how many player symbols I have, find row and cols for array malloc
-
-	//	if (game_state->map_size.err != NO_ERROR)
-//		error_message_exit(game_state->map_size.err);
-
-
+	game_state->map_size = initiate_map_size(file_name);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		return (error_handling(game_state->data.err = ERR_OPEN));
-	if (form_data_structure(fd, &data) > 0)
-		return (error_handling(game_state->data.err));
+	form_data_structure(fd, &data);
 	game_state->data = data;
+	
+	//here
 	if (read_map(fd, game_state) > 0)
 		return (error_handling(game_state->data.err));
 	if (close(fd) < 0)

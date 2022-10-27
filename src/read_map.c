@@ -15,11 +15,11 @@
 int find_kind_structure(char c, t_tile *tile)
 {
     if (c == '0')
-        tile->kind = KIND_FLOOR;
+        tile->kind = FLOOR;
     else if (c == '1')
-        tile->kind = KIND_WALL;
+        tile->kind = WALL;
     else if (c == ' ')
-        tile->kind = KIND_EMPTY;
+        tile->kind = EMPTY;
     else
         return (1);
     return (0);
@@ -92,7 +92,7 @@ int        read_map(int fd, t_game_state *gstate) //t_game_state *gstate, int fd
 
     tile.col = 0;
     tile.row = 0;
-    tile.kind = KIND_EMPTY;
+    tile.kind = EMPTY;
     map_flag = 0;
     gstate->tiles = malloc(gstate->map_size.len_rows * gstate->map_size.len_cols * sizeof(t_tile));
     set_tile(gstate, tile);
