@@ -7,6 +7,7 @@
 //
 
 #include "resolution.h"
+#include "map_tiles_utils.h"
 #include "libft.h"
 
 int space_skipper(t_data *data, char *str)
@@ -24,17 +25,26 @@ int space_skipper(t_data *data, char *str)
     return (i);
 }
 
+int space_skipper_ext(char *str)
+{
+	int i;
+
+	i = 0;
+	if (is_maze_space(str[i]))
+	{
+		while (is_maze_space(str[i]))
+			i++;
+	}
+	else
+		error_message_exit(ERR_RESOLUTION);
+	return (i);
+}
+
 int        get_number_for_x_and_y(char *str, t_data *data)
 {
     int i;
-    int check_space;
 
-    i = 0;
-    check_space = space_skipper(data, str);
-    if (data->err == ERR_RESOLUTION)
-        return (-1);
-    else
-        i = i + check_space;
+	i = space_skipper(data, str);
     if (data->x_render_size == 0)
         data->x_render_size = ft_atoi(str);
     else

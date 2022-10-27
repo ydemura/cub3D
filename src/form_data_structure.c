@@ -52,15 +52,15 @@ void 	flag_checkup(t_data *data)
         data->flags.all_flags_collected = 0;
 }
 
-int   string_handler(char *str, t_data *data)
+int   get_texture_color_resolution(char *str, t_data *data)
 {
 	while (*str != '\0' && is_maze_space(*str) == TRU)
 		str++;
 	if (*str == 'N' || *str == 'W' || *str == 'E' || *str == 'S')
-	{
-		if (error_check_collect_textures(str, data) == 1)
-			return (data->err);
-	}
+		collect_textures(str, data);
+	
+	
+	
 	else if (*str == 'R')
 	{
 		if (collect_resolution(data, str + 1) == 0)
@@ -76,11 +76,11 @@ int   string_handler(char *str, t_data *data)
 	return (data->err);
 }
 
-int    pars_buffer(t_data *data, char *buff)
+int    pars_received_string(t_data *data, char *buff)
 {
     if (data->flags.all_flags_collected == 0 && is_string_maze(buff) == 1)
         return (data->err = ERR_INCOMPLETE_INFORMATION);
-    if (string_handler(buff, data) != 0)
+    if (get_texture_color_resolution(buff, data) != 0)
         return (data->err);
     flag_checkup(data);
     return (0);
@@ -91,7 +91,7 @@ int        form_data_structure(int fd, t_data *data)
 	char 	*buff;
 	int		res;
 
-	initiate_header_srtuct(data);
+	initiate_data_srtuct(data);
 	res = 1;
     while (res > 0 && data->flags.all_flags_collected != 1)
 	{
@@ -100,7 +100,7 @@ int        form_data_structure(int fd, t_data *data)
 		res = exam_get_next_line(fd, &buff); // ADD original GNL?
 		if (buff != NULL)
 		{
-            pars_buffer(data, buff);
+            pars_received_string(data, buff);
             free(buff);
 		}
 	}

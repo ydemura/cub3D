@@ -11,6 +11,6 @@
 
 #include "initiate_data.h"
 
-int    error_check_collect_textures(char *s, t_data *data);
+int    collect_textures(char *s, t_data *data);
 
 #endif /* textures_h */

@@ -25,13 +25,9 @@ t_flags initiate_flags(void)
 	return (flags);
 }
 
-void initiate_header_srtuct(t_data *data)
+void initiate_data_srtuct(t_data *data)
 {
     data->err = NO_ERROR;
-	data->texture_no_file = NULL;
-	data->texture_so_file = NULL;
-	data->texture_ea_file = NULL;
-	data->texture_we_file = NULL;
 	data->fd_no = -1;
 	data->fd_so = -1;
 	data->fd_ea = -1;

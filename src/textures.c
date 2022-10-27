@@ -34,14 +34,12 @@ int	str_cmpr_till_n(const char *str, const char *example, int n)
 
 int		collect_path_open_fd(char *str)
 {
-    char *path_str = NULL;
-	int i;
 	int fd;
-	
-	i = 0;
-	while (is_maze_space(str[i]))
-		i++;
-	fd = open(str + i, O_RDONLY);
+
+	while (is_maze_space(*str))
+		str++;
+	str += 2;
+	fd = open(str, O_RDONLY);
 	if (fd < 0)
 	{
 		fd = 1; // for test purpose as I dont have textures!
@@ -52,7 +50,7 @@ int		collect_path_open_fd(char *str)
     return (fd);
 }
 
- void	find_identifier(char *str, t_data *data)
+ void	pick_identifier(char *str, t_data *data)
 {
 	if (str_cmpr_till_n(str, "NO", 2))
     {
@@ -76,7 +74,7 @@ int		collect_path_open_fd(char *str)
 	}
 }
 
-int    error_check_collect_textures(char *str, t_data *data)
+int    collect_textures(char *str, t_data *data)
 {
     int i;
     
@@ -91,7 +89,7 @@ int    error_check_collect_textures(char *str, t_data *data)
 	while (is_maze_space(str[i]) == TRU)
 		i++;
 	if (str_cmpr_till_n(str + i, "./", 2))
-		find_identifier(str, data);
+		pick_identifier(str, data);
 	else
 		error_message_exit(ERR_ELEMENT_IDENTIFIER);
 	return (0);

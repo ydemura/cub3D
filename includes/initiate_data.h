@@ -35,11 +35,7 @@ typedef struct  s_data
 {
 	t_error_handling err;
 	t_flags flags;
-	char *texture_no_file;
-	char *texture_so_file;
-	char *texture_ea_file;
-	char *texture_we_file;
-	int fd_no;
+	int fd_no; //need to be closed later, pass it to algoritn opened!
 	int fd_so;
 	int fd_ea;
 	int fd_we;
@@ -49,6 +45,6 @@ typedef struct  s_data
 	int y_render_size;
 }               t_data;
 
-void initiate_header_srtuct(t_data *data);
+void initiate_data_srtuct(t_data *data);
 
 #endif /* initiate_struct_h */
