@@ -1,25 +1,12 @@
-NAME = result_cubik
-SRCS =	src_includes/main.c \
-		src_includes/exam_gnl.c \
-		src_includes/error_handling.c \
-		src_includes/form_gamestate.c \
-		src_includes/work_with_header/initiate_struct.c \
-		src_includes/work_with_header/colours_check_and_collect.c \
-		src_includes/work_with_header/resolution_collect.c \
-		src_includes/work_with_header/collect_path_from_str.c \
-		src_includes/work_with_header/parse_info_from_header_map.c \
-		src_includes/work_with_map/utilities_tiles.c \
-		src_includes/work_with_map/count_map_size.c \
-		src_includes/work_with_map/read_map.c \
-		src_includes/work_with_map/read_map_addition.c \
-		src_includes/algoritm/open_window_start_drawing.c \
+NAME = cube3D
+SRCS = src/*.c
 		
 
 OBJ = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra  -g
 LIBMLX_FILE = libmlx.dylib
-LIBFT = src_includes/libft_for_cube/libft.a
-HEADER = src_includes/header_all.h
+LIBFT = libft_norme3
+HEADER = includes
 CC = gcc
 
 all: $(NAME)
@@ -31,18 +18,18 @@ $(LIBMLX_FILE):
 	cp mlx/libmlx.dylib .
 
 %.o: %.c $(HEADER)
-	gcc $(FLAGS) -c -o $@ $< -I ./src_includes -I ./src_includes/libft_for_cube -I ./src_includes/algoritm -I ./mlx/mlx.h
+	gcc $(FLAGS) -c -o $@ $< -I ./cubik_xcode_part/cubik_xcode_part -I ./cubik_xcode_part/cubik_xcode_part/libft_for_cube -I ./cubik_xcode_part/cubik_xcode_part/algoritm -I ./mlx/mlx.h
 
 $(LIBFT):
-	$(MAKE) -C /src_includes/libft_for_cube
+	$(MAKE) -C cubik_xcode_part/cubik_xcode_part/libft_for_cube
 
 clean:
 	rm -f $(OBJ) $(LIBMLX_FILE)
-	rm -f /src_includes/object_files_can/*.o
+	rm -f cubik_xcode_part/cubik_xcode_part/object_files_can/*.o
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f /src_includes/object_files_can/*.o
+	rm -f cubik_xcode_part/cubik_xcode_part/object_files_can/*.o
 
 re:
 	$(MAKE) fclean
@@ -51,7 +38,9 @@ re:
 .PHONY: all clean fclean re
 
 #https://makefiletutorial.com/
-# https://noahloomans.com/tutorials/makefile-2.0/
+
+
+# https://noahloomans.com/tutorials/makefile-2.0/ - feedback 
 
 
 
@@ -72,29 +61,29 @@ re:
 # working before adding algoritm:
 
 # NAME = cubic_result
-# SRCS =	src_includes/src_includes/main.c \
-# 		src_includes/src_includes/exam_gnl.c \
-# 		src_includes/src_includes/error_handling.c \
-# 		src_includes/src_includes/form_gamestate.c \
-# 		src_includes/src_includes/work_with_header/initiate_struct.c \
-# 		src_includes/src_includes/work_with_header/colours_check_and_collect.c \
-# 		src_includes/src_includes/work_with_header/resolution_collect.c \
-# 		src_includes/src_includes/work_with_header/collect_path_from_str.c \
-# 		src_includes/src_includes/work_with_header/parse_info_from_header_map.c \
-# 		src_includes/src_includes/work_with_map/utilities_tiles.c \
-# 		src_includes/src_includes/work_with_map/count_map_size.c \
-# 		src_includes/src_includes/work_with_map/read_map.c \
-# 		src_includes/src_includes/work_with_map/read_map_addition.c \
+# SRCS =	cubik_xcode_part/cubik_xcode_part/main.c \
+# 		cubik_xcode_part/cubik_xcode_part/exam_gnl.c \
+# 		cubik_xcode_part/cubik_xcode_part/error_handling.c \
+# 		cubik_xcode_part/cubik_xcode_part/form_gamestate.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_header/initiate_struct.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_header/colours_check_and_collect.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_header/resolution_collect.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_header/collect_path_from_str.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_header/parse_info_from_header_map.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_map/utilities_tiles.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_map/count_map_size.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_map/read_map.c \
+# 		cubik_xcode_part/cubik_xcode_part/work_with_map/read_map_addition.c \
 		
 
 # OBJ = $(SRCS:.c=.o)
 
 # FLAGS = -Wall -Wextra  -g
 # LIBMLX_FILE = libmlx.dylib
-# LIBFT = src_includes/src_includes/libft_for_cube/libft.a
+# LIBFT = cubik_xcode_part/cubik_xcode_part/libft_for_cube/libft.a
 
-# HEADER =	src_includes/src_includes/header_all.h \
-# 			src_includes/src_includes/parsing_header.h
+# HEADER =	cubik_xcode_part/cubik_xcode_part/header_all.h \
+# 			cubik_xcode_part/cubik_xcode_part/parsing_header.h
 # CC = gcc
 
 # all: $(NAME)
@@ -106,18 +95,18 @@ re:
 # 	cp mlx/libmlx.dylib .
 
 # %.o: %.c $(HEADER)
-# 	gcc $(FLAGS) -c -o $@ $< -I ./src_includes/src_includes -I ./src_includes/src_includes/libft_for_cube
+# 	gcc $(FLAGS) -c -o $@ $< -I ./cubik_xcode_part/cubik_xcode_part -I ./cubik_xcode_part/cubik_xcode_part/libft_for_cube
 
 # $(LIBFT):
-# 	$(MAKE) -C src_includes/src_includes/libft_for_cube
+# 	$(MAKE) -C cubik_xcode_part/cubik_xcode_part/libft_for_cube
 
 # clean:
 # 	rm -f $(OBJ) $(LIBMLX_FILE)
-# 	rm -f src_includes/src_includes/object_files_can/*.o
+# 	rm -f cubik_xcode_part/cubik_xcode_part/object_files_can/*.o
 
 # fclean: clean
 # 	rm -f $(NAME)
-# 	rm -f src_includes/src_includes/object_files_can/*.o
+# 	rm -f cubik_xcode_part/cubik_xcode_part/object_files_can/*.o
 
 # re:
 # 	$(MAKE) fclean
