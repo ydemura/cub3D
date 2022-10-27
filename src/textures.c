@@ -8,7 +8,6 @@
 
 #include "textures.h"
 #include "colours.h"
-#include "resolution.h"
 #include "map_tiles_utils.h"
 #include "error_handling.h"
 #include "libft.h"

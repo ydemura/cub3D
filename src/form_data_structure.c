@@ -8,7 +8,6 @@
 
 #include "form_data_structure.h"
 #include "colours.h"
-#include "resolution.h"
 #include "textures.h"
 #include "gnl.h"
 #include "map_tiles_utils.h"
@@ -33,20 +32,19 @@ int 	is_string_maze(char *str)
 	return (TRU); //is map
 }
 
-void 	flag_checkup(t_data *data)
+void 	is_all_flags_collected(t_data *data)
 {
     if (data->flags.flag_w == 1 && data->flags.flag_s == 1 &&
-        data->flags.flag_e == 1 && data->flags.flag_n == 1 && data->flags.flag_f == 1 &&
-        data->flags.flag_c == 1 && data->flags.flag_r == 1)
+        data->flags.flag_e == 1 && data->flags.flag_n == 1 &&
+		data->flags.flag_f == 1 && data->flags.flag_c == 1)
 	{
         data->flags.all_flags_collected = 1;
 	}
 	else if (data->flags.flag_w > 1 || data->flags.flag_s > 1 ||
-             data->flags.flag_e > 1 || data->flags.flag_n > 1 || data->flags.flag_f > 1 ||
-             data->flags.flag_c > 1 || data->flags.flag_r > 1)
+             data->flags.flag_e > 1 || data->flags.flag_n > 1 ||
+			 data->flags.flag_f > 1 || data->flags.flag_c > 1)
 	{
-        data->flags.all_flags_collected = 2;
-		data->err = ERR_DUPLICATE_ELEMENT;
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
 	}
     else
         data->flags.all_flags_collected = 0;
@@ -58,31 +56,24 @@ int   get_texture_color_resolution(char *str, t_data *data)
 		str++;
 	if (*str == 'N' || *str == 'W' || *str == 'E' || *str == 'S')
 		collect_textures(str, data);
-	
-	
-	
-	else if (*str == 'R')
-	{
-		if (collect_resolution(data, str + 1) == 0)
-			data->flags.flag_r++;
-	}
+
 	else if (*str == 'C' || *str == 'F')
 	{
 		if (color_check_collection(data, str) == 1)
 			return (data->err);
 	}
 	else
-		data->err = ERR_ELEMENT_IDENTIFIER;
-	return (data->err);
+		error_message_exit(ERR_ELEMENT_IDENTIFIER);
+	return (0);
 }
 
 int    pars_received_string(t_data *data, char *buff)
 {
     if (data->flags.all_flags_collected == 0 && is_string_maze(buff) == 1)
-        return (data->err = ERR_INCOMPLETE_INFORMATION);
+		error_message_exit(ERR_INCOMPLETE_INFORMATION);
     if (get_texture_color_resolution(buff, data) != 0)
         return (data->err);
-    flag_checkup(data);
+    is_all_flags_collected(data);
     return (0);
 }
 

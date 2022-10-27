@@ -20,7 +20,6 @@ t_flags initiate_flags(void)
 	flags.flag_w = 0;
 	flags.flag_f = 0;
 	flags.flag_c = 0;
-	flags.flag_r = 0;
 	flags.all_flags_collected = 0;
 	return (flags);
 }
@@ -34,7 +33,5 @@ void initiate_data_srtuct(t_data *data)
 	data->fd_we = -1;
 	data->rgb_floor = 0; // should this be int?
 	data->rgb_ceiling = 0;
-	data->x_render_size = 0;
-	data->y_render_size = 0;
 	data->flags = initiate_flags();
 }

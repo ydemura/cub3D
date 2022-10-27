@@ -27,7 +27,6 @@ typedef struct  s_flags
 	int flag_w;
 	int flag_f;
 	int flag_c;
-	int flag_r;
 	int all_flags_collected;
 }           t_flags;
 
@@ -41,8 +40,6 @@ typedef struct  s_data
 	int fd_we;
 	int rgb_floor;
 	int rgb_ceiling;
-	int x_render_size;
-	int y_render_size;
 }               t_data;
 
 void initiate_data_srtuct(t_data *data);
