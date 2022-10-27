@@ -21,10 +21,10 @@ typedef enum    e_kind
 
 typedef struct  s_flags
 {
-	int flag_n;
-	int flag_s;
-	int flag_e;
-	int flag_w;
+	int flag_no;
+	int flag_so;
+	int flag_ea;
+	int flag_we;
 	int flag_f;
 	int flag_c;
 	int all_flags_collected;
@@ -38,8 +38,8 @@ typedef struct  s_data
 	int fd_so;
 	int fd_ea;
 	int fd_we;
-	int rgb_floor;
-	int rgb_ceiling;
+	unsigned int rgb_floor;
+	unsigned int rgb_ceiling;
 }               t_data;
 
 void initiate_data_srtuct(t_data *data);

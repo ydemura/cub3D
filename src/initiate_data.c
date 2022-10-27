@@ -14,10 +14,10 @@ t_flags initiate_flags(void)
 {
 	t_flags flags;
 
-	flags.flag_n = 0;
-	flags.flag_e = 0;
-	flags.flag_s = 0;
-	flags.flag_w = 0;
+	flags.flag_no = 0;
+	flags.flag_ea = 0;
+	flags.flag_so = 0;
+	flags.flag_we = 0;
 	flags.flag_f = 0;
 	flags.flag_c = 0;
 	flags.all_flags_collected = 0;
@@ -31,7 +31,7 @@ void initiate_data_srtuct(t_data *data)
 	data->fd_so = -1;
 	data->fd_ea = -1;
 	data->fd_we = -1;
-	data->rgb_floor = 0; // should this be int?
+	data->rgb_floor = 0;
 	data->rgb_ceiling = 0;
 	data->flags = initiate_flags();
 }

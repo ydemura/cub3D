@@ -7,39 +7,11 @@
 //
 
 #include "colours.h"
+#include "map_tiles_utils.h"
+#include "error_handling.h"
 #include "libft.h"
 
-int		str_roller(char *str, t_data *data)
-{
-	int i;
-
-	i = 0;
-	while (ft_isdigit(str[i]) == 1)
-		i++;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == ',')
-		i++;
-	else
-		data->err = ERR_COLOUR;
-	return (i);
-}
-
-void	tail_check(char *str, t_data *data)
-{
-	while (*str != '\0')
-    {
-        if (*str == ' ' || *str == '\t')
-            str++;
-        else
-		{
-			data->err = ERR_COLOUR;
-			return ;
-		}    
-    }
-}
-
-int color_maker(int red,  int green,  int blue, t_data *data)
+unsigned int color_maker(int red,  int green,  int blue, t_data *data)
 {
 	int transperant;
 
@@ -48,58 +20,157 @@ int color_maker(int red,  int green,  int blue, t_data *data)
         && (blue >= 0 && blue <= 255))
 		return (transperant << 24 | red << 16 | green << 8 | blue);
 	else
-		data->err = ERR_COLOUR;
+		error_message_exit(ERR_COLOUR);
 	return (-1);
 }
 
 int 	number_collection(char *str, t_data *data, char c, int *n_array)
 {
-	while (*str == ' ' || *str == '\t')
+	while (ft_isdigit(*str) == 0)
 		str++;
-	if (ft_isdigit(*str) == 1)
-		n_array[0] = ft_atoi(str);
-	str += str_roller(str, data);
-	while (*str == ' ' || *str == '\t')
-		str++;
-	if (ft_isdigit(*str) == 1)
-		n_array[1] = ft_atoi(str);
-	str += str_roller(str, data);
-	while (*str == ' ' || *str == '\t')
-		str++;
-	if (ft_isdigit(*str) == 1)
-		n_array[2] = ft_atoi(str);
+	n_array[0] = ft_atoi(str);
 	while (ft_isdigit(*str) == 1)
 		str++;
-	tail_check(str, data);
+	while (ft_isdigit(*str) == 0)
+		str++;
+	n_array[1] = ft_atoi(str);
+	while (ft_isdigit(*str) == 1)
+		str++;
+	while (ft_isdigit(*str) == 0)
+		str++;
+	n_array[2] = ft_atoi(str);
+	while (ft_isdigit(*str) == 1)
+		str++;
 	if (c == 'C')
 		data->rgb_ceiling = color_maker(n_array[0], n_array[1], n_array[2], data);
 	if (c == 'F')
 		data->rgb_floor = color_maker(n_array[0], n_array[1], n_array[2], data);
-	return (0);
+	return (1);
 }
 
-int color_check_collection(t_data *data, char *str)
+int digit_pattern(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (is_maze_space(str[i]))
+		i++;
+	while (ft_isdigit(str[i]) == 1)
+		i++;
+	while (is_maze_space(str[i]))
+		i++;
+	return (i);
+}
+
+void	is_valid_color_input(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (is_maze_space(str[i]))
+		i++;
+	if (str[i] == 'C' || str[i] == 'F')
+		i++;
+	i += digit_pattern(str + i);
+	if (str[i] == ',')
+		i++;
+	i += digit_pattern(str + i);
+	if (str[i] == ',')
+		i++;
+	i += digit_pattern(str + i);
+	if (str[i] != '\0')
+		error_message_exit(ERR_COLOUR);
+	if (ft_strlen(str) != i)
+		error_message_exit(ERR_COLOUR);
+}
+
+int color_collect(t_data *data, char *str)
 {
     int n_array[3];
     int *ptr_array;
-    ptr_array = n_array;
-    
-	if ( *str == 'C' && (*(str + 1) == ' ' || *(str + 1) == '\t'))
+	int i;
+
+	i = 0;
+	ptr_array = n_array;
+	while (str[i] != '\0')
 	{
-		number_collection(str + 1, data, 'C', ptr_array);
-		if (data->err == NO_ERROR)
-			data->flags.flag_c++;
+		if (str[i] == 'C' || str[i] == 'F' || is_maze_space(str[i])
+				|| str[i] == ',' || ft_isdigit(str[i]))
+			i++;
+		else
+			error_message_exit(ERR_COLOUR);
 	}
-	else if ( *str == 'F' && (*(str + 1) == ' ' || *(str + 1) == '\t'))
-	{
-		number_collection(str + 1, data, 'F', ptr_array);
-		if (data->err == NO_ERROR)
-			data->flags.flag_f++;
-	}
-	else
-		data->err = ERR_ELEMENT_IDENTIFIER;
-	if (data->err == NO_ERROR)
-		return (0);
-	else
-		return (1);
+	is_valid_color_input(str);
+	if (*str == 'C')
+		data->flags.flag_c += number_collection(str + 1, data, 'C', ptr_array);
+	else if (*str == 'F')
+		data->flags.flag_f += number_collection(str + 1, data, 'F', ptr_array);
+	return (0);
 }
+
+
+//	while (is_maze_space(*str))
+//		str++;
+//	if (ft_isdigit(*str) == 1)
+//		n_array[0] = ft_atoi(str);
+//	str += str_roller(str, data);
+//	while (is_maze_space(*str))
+//		str++;
+//	if (ft_isdigit(*str) == 1)
+//		n_array[1] = ft_atoi(str);
+//	str += str_roller(str, data);
+//	while (is_maze_space(*str))
+//		str++;
+//	if (ft_isdigit(*str) == 1)
+//		n_array[2] = ft_atoi(str);
+//	while (ft_isdigit(*str) == 1)
+//		str++;
+//	tail_check(str, data);
+//	if (c == 'C')
+//		data->rgb_ceiling = color_maker(n_array[0], n_array[1], n_array[2], data);
+//	if (c == 'F')
+//		data->rgb_floor = color_maker(n_array[0], n_array[1], n_array[2], data);
+//	return (1);
+
+
+//int		str_roller(char *str, t_data *data)
+//{
+//	int i;
+//
+//	i = 0;
+//	while (ft_isdigit(str[i]))
+//		i++;
+//	while (is_maze_space(*str))
+//		i++;
+//	if (str[i] == ',')
+//		i++;
+//	else
+//		error_message_exit(ERR_COLOUR);
+//	return (i);
+//}
+//
+//void	tail_check(char *str, t_data *data)
+//{
+//	while (*str != '\0')
+//	{
+//		if (is_maze_space(*str))
+//			str++;
+//		else
+//			error_message_exit(ERR_COLOUR);
+//	}
+//}
+//
+//void	is_only_allowed_chars(const char *str)
+//{
+//	while (str && *str != '\0')
+//	{
+//		if (*str == 'C' || *str == 'F')
+//			str++;
+//		else if (is_maze_space(*str) || *str == ',')
+//			str++;
+//		else if (ft_isdigit(*str))
+//			str++;
+//		else
+//			error_message_exit(ERR_COLOUR);
+//	}
+//}
