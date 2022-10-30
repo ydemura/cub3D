@@ -15,7 +15,7 @@
 		32254A64290947B900F1FD97 /* initiate_map_size.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A63290947B900F1FD97 /* initiate_map_size.c */; };
 		32254A66290947C200F1FD97 /* initiate_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A65290947C200F1FD97 /* initiate_data.c */; };
 		32254A68290947C900F1FD97 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A67290947C900F1FD97 /* main.c */; };
-		32254A6A290947D100F1FD97 /* map_tiles_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A69290947D100F1FD97 /* map_tiles_utils.c */; };
+		32254A6A290947D100F1FD97 /* map_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A69290947D100F1FD97 /* map_utils.c */; };
 		32254A6C290947D800F1FD97 /* read_map.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A6B290947D800F1FD97 /* read_map.c */; };
 		32254A70290947E200F1FD97 /* textures.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A6F290947E200F1FD97 /* textures.c */; };
 		32254AA02909481F00F1FD97 /* ft_isdigit.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A712909481E00F1FD97 /* ft_isdigit.c */; };
@@ -64,7 +64,7 @@
 		32254ACB2909481F00F1FD97 /* ft_tolower.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A9E2909481F00F1FD97 /* ft_tolower.c */; };
 		32254ACC2909481F00F1FD97 /* get_next_line.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A9F2909481F00F1FD97 /* get_next_line.c */; };
 		32254ACE29094AEB00F1FD97 /* check_map_borders.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254ACD29094AEB00F1FD97 /* check_map_borders.c */; };
-		32DC7BB0290AF9040067D21D /* boardersd.c in Sources */ = {isa = PBXBuildFile; fileRef = 32DC7BAF290AF9040067D21D /* boardersd.c */; };
+		32DC7BB0290AF9040067D21D /* form_grid.c in Sources */ = {isa = PBXBuildFile; fileRef = 32DC7BAF290AF9040067D21D /* form_grid.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,8 +88,8 @@
 		32254A522909472C00F1FD97 /* gnl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gnl.h; path = includes/gnl.h; sourceTree = SOURCE_ROOT; };
 		32254A532909473200F1FD97 /* initiate_map_size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = initiate_map_size.h; path = includes/initiate_map_size.h; sourceTree = SOURCE_ROOT; };
 		32254A542909473B00F1FD97 /* initiate_data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = initiate_data.h; path = includes/initiate_data.h; sourceTree = SOURCE_ROOT; };
-		32254A552909474000F1FD97 /* map_tiles_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = map_tiles_utils.h; path = includes/map_tiles_utils.h; sourceTree = SOURCE_ROOT; };
-		32254A562909475A00F1FD97 /* read_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = read_map.h; path = includes/read_map.h; sourceTree = SOURCE_ROOT; };
+		32254A552909474000F1FD97 /* map_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = map_utils.h; path = includes/map_utils.h; sourceTree = SOURCE_ROOT; };
+		32254A562909475A00F1FD97 /* read_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = read_map.h; path = cube3d_xcode/read_map.h; sourceTree = SOURCE_ROOT; };
 		32254A582909476400F1FD97 /* textures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = textures.h; path = includes/textures.h; sourceTree = SOURCE_ROOT; };
 		32254A592909479300F1FD97 /* colours.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = colours.c; path = src/colours.c; sourceTree = SOURCE_ROOT; };
 		32254A5B2909479A00F1FD97 /* error_handling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = error_handling.c; path = src/error_handling.c; sourceTree = SOURCE_ROOT; };
@@ -99,8 +99,8 @@
 		32254A63290947B900F1FD97 /* initiate_map_size.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = initiate_map_size.c; path = src/initiate_map_size.c; sourceTree = SOURCE_ROOT; };
 		32254A65290947C200F1FD97 /* initiate_data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = initiate_data.c; path = src/initiate_data.c; sourceTree = SOURCE_ROOT; };
 		32254A67290947C900F1FD97 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = src/main.c; sourceTree = SOURCE_ROOT; };
-		32254A69290947D100F1FD97 /* map_tiles_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = map_tiles_utils.c; path = src/map_tiles_utils.c; sourceTree = SOURCE_ROOT; };
-		32254A6B290947D800F1FD97 /* read_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = read_map.c; path = src/read_map.c; sourceTree = SOURCE_ROOT; };
+		32254A69290947D100F1FD97 /* map_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = map_utils.c; path = src/map_utils.c; sourceTree = SOURCE_ROOT; };
+		32254A6B290947D800F1FD97 /* read_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = read_map.c; path = cube3d_xcode/read_map.c; sourceTree = SOURCE_ROOT; };
 		32254A6F290947E200F1FD97 /* textures.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = textures.c; path = src/textures.c; sourceTree = SOURCE_ROOT; };
 		32254A712909481E00F1FD97 /* ft_isdigit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ft_isdigit.c; path = libft_norme3/ft_isdigit.c; sourceTree = SOURCE_ROOT; };
 		32254A722909481E00F1FD97 /* ft_strmapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ft_strmapi.c; path = libft_norme3/ft_strmapi.c; sourceTree = SOURCE_ROOT; };
@@ -152,8 +152,8 @@
 		32254ACD29094AEB00F1FD97 /* check_map_borders.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = check_map_borders.c; path = cube3d_xcode/check_map_borders.c; sourceTree = SOURCE_ROOT; };
 		32254ACF29094AF700F1FD97 /* check_map_borders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = check_map_borders.h; path = cube3d_xcode/check_map_borders.h; sourceTree = SOURCE_ROOT; };
 		32254AD029095FF800F1FD97 /* map_basic.cub */ = {isa = PBXFileReference; lastKnownFileType = text; name = map_basic.cub; path = maps_variations/map_basic.cub; sourceTree = "<group>"; };
-		32DC7BAE290AF8F60067D21D /* boarders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = boarders.h; path = includes/boarders.h; sourceTree = SOURCE_ROOT; };
-		32DC7BAF290AF9040067D21D /* boardersd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = boardersd.c; path = src/boardersd.c; sourceTree = SOURCE_ROOT; };
+		32DC7BAE290AF8F60067D21D /* form_grid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = form_grid.h; path = includes/form_grid.h; sourceTree = SOURCE_ROOT; };
+		32DC7BAF290AF9040067D21D /* form_grid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = form_grid.c; path = src/form_grid.c; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,8 +193,8 @@
 				32254A502909471A00F1FD97 /* form_gamestate.h */,
 				32254A5F290947AC00F1FD97 /* form_gamestate.c */,
 				32254A67290947C900F1FD97 /* main.c */,
-				32254ACF29094AF700F1FD97 /* check_map_borders.h */,
-				32254ACD29094AEB00F1FD97 /* check_map_borders.c */,
+				32254A562909475A00F1FD97 /* read_map.h */,
+				32254A6B290947D800F1FD97 /* read_map.c */,
 			);
 			path = cube3d_xcode;
 			sourceTree = "<group>";
@@ -214,14 +214,14 @@
 		322549C329081A2600F1FD97 /* map */ = {
 			isa = PBXGroup;
 			children = (
-				32DC7BAE290AF8F60067D21D /* boarders.h */,
-				32DC7BAF290AF9040067D21D /* boardersd.c */,
-				32254A552909474000F1FD97 /* map_tiles_utils.h */,
-				32254A69290947D100F1FD97 /* map_tiles_utils.c */,
+				32254A552909474000F1FD97 /* map_utils.h */,
+				32254A69290947D100F1FD97 /* map_utils.c */,
 				32254A532909473200F1FD97 /* initiate_map_size.h */,
 				32254A63290947B900F1FD97 /* initiate_map_size.c */,
-				32254A562909475A00F1FD97 /* read_map.h */,
-				32254A6B290947D800F1FD97 /* read_map.c */,
+				32254ACF29094AF700F1FD97 /* check_map_borders.h */,
+				32254ACD29094AEB00F1FD97 /* check_map_borders.c */,
+				32DC7BAE290AF8F60067D21D /* form_grid.h */,
+				32DC7BAF290AF9040067D21D /* form_grid.c */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 				32254AAD2909481F00F1FD97 /* ft_substr.c in Sources */,
 				32254ACE29094AEB00F1FD97 /* check_map_borders.c in Sources */,
 				32254AA02909481F00F1FD97 /* ft_isdigit.c in Sources */,
-				32254A6A290947D100F1FD97 /* map_tiles_utils.c in Sources */,
+				32254A6A290947D100F1FD97 /* map_utils.c in Sources */,
 				32254AA52909481F00F1FD97 /* ft_lstadd_back.c in Sources */,
 				32254ABA2909481F00F1FD97 /* ft_calloc.c in Sources */,
 				32254AA62909481F00F1FD97 /* ft_strncmp.c in Sources */,
@@ -393,7 +393,7 @@
 				32254AC22909481F00F1FD97 /* ft_strlcpy.c in Sources */,
 				32254AA92909481F00F1FD97 /* ft_strnstr.c in Sources */,
 				32254AC82909481F00F1FD97 /* ft_strrchr.c in Sources */,
-				32DC7BB0290AF9040067D21D /* boardersd.c in Sources */,
+				32DC7BB0290AF9040067D21D /* form_grid.c in Sources */,
 				32254AAC2909481F00F1FD97 /* ft_strtrim.c in Sources */,
 				32254AB42909481F00F1FD97 /* ft_split.c in Sources */,
 				32254AC72909481F00F1FD97 /* ft_memcmp.c in Sources */,

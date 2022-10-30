@@ -9,9 +9,16 @@
 #include "form_gamestate.h"
 #include "form_data_structure.h"
 #include "read_map.h"
+#include "form_grid.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+
+void	camera_resolution(t_game_state *gstate)
+{
+	gstate->player.x_camera = 0;
+	gstate->player.y_camera = 0.66;
+}
 
 int     form_gamestate(t_game_state *game_state, const char *file_name)
 {
@@ -24,12 +31,12 @@ int     form_gamestate(t_game_state *game_state, const char *file_name)
 		return (error_handling(game_state->data.err = ERR_OPEN));
 	form_data_structure(fd, &data);
 	game_state->data = data;
-	
-	//here
-	if (read_map(fd, game_state) > 0)
-		return (error_handling(game_state->data.err));
+	form_grid(fd, game_state);
+	camera_resolution(game_state);
 	if (close(fd) < 0)
 		return (error_handling(game_state->data.err = ERR_CLOSE));
+	
+	
 	printf("finished form gameatste\n"); //small check with printf here
 	return (0);
 }

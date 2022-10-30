@@ -13,15 +13,15 @@
 #include "initiate_data.h"
 #include "initiate_map_size.h"
 
-typedef struct  s_player_info
+typedef struct  s_player
 {
-	int x_player;
-	int y_player;
-	int x_player_view_direction;
-	int y_player_view_direction;
+	int x;
+	int y;
+	int x_view_direction;
+	int y_view_direction;
 	double x_camera;
 	double y_camera;
-}               t_player_info;
+}               t_player;
 
 typedef struct         s_tile
 {
@@ -34,7 +34,7 @@ typedef struct  s_game_state
 {
 	t_map_size	map_size;
 	t_data		data;
-	t_player_info p_info;
+	t_player player;
 	
 	//wont use
 	t_tile      *tiles;
@@ -54,14 +54,13 @@ typedef struct  s_game_state
 //	int fd_so;
 //	int fd_ea;
 //	int fd_we;
-//	int x_player;
-//	int y_player;
-//	int x_player_view_direction;
-//	int y_player_view_direction;
+//	int x;
+//	int y;
+//	int x_view_direction;
+//	int y_view_direction;
 //	double x_camera;
 //	double y_camera;
 //}               t_parsing_result;
-
 
 int     form_gamestate(t_game_state *game_state, const char *file_name);
 

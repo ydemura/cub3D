@@ -10,7 +10,7 @@
 #include "libft.h"
 #include "gnl.h"
 #include "form_data_structure.h"
-#include "map_tiles_utils.h"
+#include "map_utils.h"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -22,6 +22,7 @@ int	initiate_map_struct_open_file(const char *file_name, t_map_size *map_size)
     map_size->len_rows = 0;
     map_size->map_error = 0;
     map_size->player_flag = 0;
+	map_size->strings_before_map = 0;
     map_size->err = NO_ERROR;
     fd = open(file_name, O_RDONLY);
     if (fd == -1)
@@ -94,10 +95,12 @@ t_map_size initiate_map_size(const char *file_name)
 			break ;
 		if (is_string_maze_part_of_map(str, &map_size) == TRU)
 			get_longest_col_increase_row(str, &map_size);
+		else if (map_size.len_rows == 0)
+			map_size.strings_before_map++;
 	}
 	if (close(fd) < 0)
 		error_message_exit(ERR_CLOSE);
-	if (map_size.player_flag != 1) /// if no player 0 - mistake, if many players - mistake
+	if (map_size.player_flag != 1)
 		error_message_exit(ERR_MAP);
 	return (map_size);
 }

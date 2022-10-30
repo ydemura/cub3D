@@ -13,11 +13,6 @@
 
 typedef enum    e_kind
 {
-//	FLOOR = '0',
-//	WALL = '1',
-//	EMPTY = ' ',
-//	END_MAP = 255,
-	
 	FLOOR = 0,
 	WALL = 1,
 	EMPTY = 3,
@@ -33,7 +28,7 @@ typedef struct  s_flags
 	int flag_f;
 	int flag_c;
 	int all_flags_collected;
-}           t_flags;
+}   t_flags;
 
 typedef struct  s_data
 {

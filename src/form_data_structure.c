@@ -10,7 +10,7 @@
 #include "colours.h"
 #include "textures.h"
 #include "gnl.h"
-#include "map_tiles_utils.h"
+#include "map_utils.h"
 #include <stdlib.h>
 
 int 	is_string_maze(char *str)

@@ -8,7 +8,7 @@
 
 #include "textures.h"
 #include "colours.h"
-#include "map_tiles_utils.h"
+#include "map_utils.h"
 #include "error_handling.h"
 #include "libft.h"
 #include <fcntl.h>
