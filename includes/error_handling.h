@@ -34,7 +34,6 @@ typedef enum     e_error_handling
 	
 }                t_error_handling;
 
-int 	error_handling(t_error_handling err);
 void	error_message_exit(t_error_handling err);
 
 #endif /* error_handling_h */

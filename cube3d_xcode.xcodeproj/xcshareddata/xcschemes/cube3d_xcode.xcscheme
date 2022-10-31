@@ -53,7 +53,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/yuliia/Codam/together_Cube/maps_variations/map_basic.cub"
+            argument = "/Users/yuliia/Codam/together_Cube/maps_variations/small_map_for_reading.cub"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

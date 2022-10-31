@@ -1,16 +1,16 @@
 //
-//  read_map.h
+//  form_grid.h
 //  cubic_xcode_part
 //
 //  Created by Julia Demura on 25/10/2022.
 //  Copyright © 2022 Yuliia Demura. All rights reserved.
 //
 
-#ifndef read_map_h
-#define read_map_h
+#ifndef form_grid_h
+#define form_grid_h
 
 #include "form_gamestate.h"
 
-int        read_map(int fd, t_game_state *gstate);
+int	form_grid(int fd, t_game_state *gstate);
 
-#endif /* read_map_h */
+#endif /* boarders_h */

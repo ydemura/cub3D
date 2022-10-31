@@ -10,7 +10,7 @@
 #include "colours.h"
 #include "textures.h"
 #include "gnl.h"
-#include "map_tiles_utils.h"
+#include "map_utils.h"
 #include <stdlib.h>
 
 int 	is_string_maze(char *str)
@@ -73,14 +73,14 @@ int    pars_received_string(t_data *data, char *buff)
     return (0);
 }
 
-int        form_data_structure(int fd, t_data *data)
+int        form_data_structure(int fd, t_map_size *mp_size, t_data *data)
 {
 	char 	*buff;
 	int		res;
 
 	initiate_data_srtuct(data);
 	res = 1;
-    while (res > 0 && data->flags.all_flags_collected != 1)
+    while (res > 0 && mp_size->strings_before_map > 0)
 	{
         if (data->err != NO_ERROR)
 			error_message_exit(ERR_MAP);
@@ -90,11 +90,9 @@ int        form_data_structure(int fd, t_data *data)
             pars_received_string(data, buff);
             free(buff);
 		}
+		mp_size->strings_before_map--;
 	}
-    if (res == 0 && data->flags.all_flags_collected != 1)
+    if (data->flags.all_flags_collected != 1)
         data->err = ERR_INCOMPLETE_INFORMATION;
-    if (data->flags.all_flags_collected == 1 && data->err == NO_ERROR)
-        return (0);
-    else
-        return (data->err);
+	return (0);
 }

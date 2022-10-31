@@ -8,32 +8,33 @@
 
 #include "form_gamestate.h"
 #include "form_data_structure.h"
-#include "read_map.h"
+#include "form_grid.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
 
-int     form_gamestate(t_game_state *game_state, const char *file_name)
+void	camera_resolution(t_game_state *gstate)
 {
-	t_data	data;
+	gstate->player.x_camera = 0;
+	gstate->player.y_camera = 0.66;
+}
+
+t_game_state	form_gamestate(const char *file_name)
+{
 	int fd;
+	t_game_state game_state;
 
-	game_state->map_size = initiate_map_size(file_name); ///checking how many player symbols I have, find row and cols for array malloc
-
-	//	if (game_state->map_size.err != NO_ERROR)
-//		error_message_exit(game_state->map_size.err);
-
-
+	game_state.map_size = initiate_map_size(file_name);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (error_handling(game_state->data.err = ERR_OPEN));
-	if (form_data_structure(fd, &data) > 0)
-		return (error_handling(game_state->data.err));
-	game_state->data = data;
-	if (read_map(fd, game_state) > 0)
-		return (error_handling(game_state->data.err));
+		error_message_exit(ERR_OPEN);
+	form_data_structure(fd, &game_state.map_size, &game_state.data);
+	form_grid(fd, &game_state);
+	camera_resolution(&game_state);
 	if (close(fd) < 0)
-		return (error_handling(game_state->data.err = ERR_CLOSE));
+		error_message_exit(ERR_CLOSE);
+	
+	
 	printf("finished form gameatste\n"); //small check with printf here
-	return (0);
+	return (game_state);
 }
