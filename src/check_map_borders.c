@@ -12,7 +12,7 @@
 
 int	is_neibor_wall_floor(t_grid *grid, int ri, int ci)
 {
-	if (ri >= grid->max_ri || ri < 0 || ci >= grid->max_ci || ci < 0)
+	if (ri >= grid->rn || ri < 0 || ci >= grid->cn || ci < 0)
 		return (0);
 	else if (grid->arr[ri][ci] == WALL || grid->arr[ri][ci] == FLOOR)
 		return (1);
@@ -58,4 +58,3 @@ int	check_map_for_boarders(t_grid *grid)
 	}
 	return 0;
 }
-

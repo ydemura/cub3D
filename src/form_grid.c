@@ -12,18 +12,19 @@
 #include <sys/uio.h>
 #include <unistd.h>
 
-int 	**malloc_int_arr(int row, int col)
+char 	**malloc_int_arr(int row, int col)
 {
-	int **arr;
+	char **arr;
 	int i;
 
-	arr = malloc(sizeof(int *) * (row + 1));
+	arr = malloc(sizeof(char *) * (row + 1));
 	if (arr == NULL)
 		error_message_exit(ERR_MALLOC);
 	i = 0;
 	while (i < row)
 	{
-		arr[i] = malloc(sizeof(int) * col);
+		arr[i] = malloc(sizeof(char) * (col + 1));
+		arr[i][col] = '\0';
 		if (arr[i] == NULL)
 			error_message_exit(ERR_MALLOC);
 		i++;
@@ -61,24 +62,20 @@ void	set_player(char c, t_grid *grid, t_game_state *gstate)
 
 void	fill_grid(int fd, t_grid *grid, t_game_state *gstate)
 {
-	char c;
-
-	if (read(fd, &c, 1) < 0)
+	if (read(fd, &grid->c, 1) < 0)
 		error_message_exit(ERR_READ);
-	if (c == '\n' || c == '\0')
+	if (grid->c == '\0')
 		return ;
-	else if (c == '0')
+	else if (grid->c == '\n')
+		grid->next_line_flag++;
+	else if (grid->c == '0')
 		gstate->map[grid->ri][grid->ci] = FLOOR;
-	else if (c == '1')
+	else if (grid->c == '1')
 		gstate->map[grid->ri][grid->ci] = WALL;
-	
-	
-	else if (is_maze_space(c)) //still not sure if this can be only ' ' or any space
+	else if (is_maze_space(grid->c)) //still not sure if this can be only ' ' or any space
 		gstate->map[grid->ri][grid->ci] = EMPTY;
-	
-	
-	else if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		set_player(c, grid, gstate);
+	else if (grid->c == 'N' || grid->c == 'S' || grid->c == 'E' || grid->c == 'W')
+		set_player(grid->c, grid, gstate);
 	else
 		error_message_exit(ERR_MAP);
 }
@@ -87,24 +84,27 @@ int	form_grid(int fd, t_game_state *gstate)
 {
 	t_grid grid;
 
-	gstate->map = malloc_int_arr(gstate->map_size.len_rows, gstate->map_size.len_cols);
+ 	gstate->map = malloc_int_arr(gstate->map_size.len_rows, gstate->map_size.len_cols);
 	grid.ri = 0;
 	grid.ci = 0;
 	grid.arr = gstate->map;
 	grid.rn = gstate->map_size.len_rows;
 	grid.cn = gstate->map_size.len_cols;
-	grid.max_ri = gstate->map_size.len_rows - 1;
-	grid.max_ci = gstate->map_size.len_cols - 1;
-	while (grid.ri < grid.rn)
+	grid.next_line_flag = 0;
+	while (grid.ri < grid.rn && grid.c != '\0')
 	{
 		grid.ci = 0;
-		while (grid.ci <= grid.cn)
+		while (grid.ci < grid.cn + 1)
 		{
 			fill_grid(fd, &grid, gstate);
+			if (grid.c == '\n')
+				break ;
 			grid.ci++;
 		}
 		grid.ri++;
 	}
+	if (grid.next_line_flag != grid.rn)
+		error_message_exit(ERR_MAP);
 	check_map_for_boarders(&grid);
 	return (0);
 }

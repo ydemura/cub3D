@@ -23,44 +23,43 @@ typedef struct  s_player
 	double y_camera;
 }               t_player;
 
-typedef struct         s_tile
-{
-	t_kind kind;
-	int row;
-	int col;
-}                    t_tile;
-
 typedef struct  s_game_state
 {
 	t_map_size	map_size;
 	t_data		data;
-	t_player player;
-	
-	//wont use
-	t_tile      *tiles;
-	//new:
-	int			**map;
+	t_player	player;
+	char		**map;
 	
 }               t_game_state;
 
 typedef struct  s_parsing_result
 {
-	char	**array;
-	int len_rows;
-	int len_cols;
+	
+	//map
+	char	**map;
+	
+	//map sizes
+	int len_rows; // - total rows number
+	int len_cols; // - longest column size
+	
+	//floor and seiling collors
 	unsigned int rgb_floor;
 	unsigned int rgb_ceiling;
+	
+	//texture opened file descriptors
 	int fd_no;
 	int fd_so;
 	int fd_ea;
 	int fd_we;
+	
+	//player section, also can be in player structure
 	int player_x;
 	int player_y;
 	int x_view_direction;
 	int y_view_direction;
 	double x_camera;
 	double y_camera;
-	int pa;
+	int pa; // not initialized
 }               t_parsing_result;
 
 t_game_state	form_gamestate(const char *file_name);

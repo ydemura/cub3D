@@ -18,7 +18,7 @@ typedef	struct 	s_map_size
 	int map_error;
 	int player_flag;
 	int	strings_before_map;
-	t_error_handling err;
+
 }				t_map_size;
 
 //open file, check how many rows and cols I need to malloc further, check if there is only 1 player flag N within map

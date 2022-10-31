@@ -11,6 +11,14 @@
 
 #include "form_gamestate.h"
 
+typedef struct         s_tile
+{
+	t_kind kind;
+	int row;
+	int col;
+}                    t_tile;
+
+
 int        read_map(int fd, t_game_state *gstate);
 
 #endif /* read_map_h */

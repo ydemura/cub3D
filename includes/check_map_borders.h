@@ -11,15 +11,14 @@
 
 typedef struct
 {
-	int ri;
-	int ci;
-	int rn;
-	int cn;
-	int max_ri;
-	int max_ci;
-	int **arr;
-
-}	t_grid;
+	int		ri;
+	int		ci;
+	int		rn;
+	int		cn;
+	char	**arr;
+	char	c;
+	int		next_line_flag;
+}			t_grid;
 
 int	check_map_for_boarders(t_grid *grid);
 

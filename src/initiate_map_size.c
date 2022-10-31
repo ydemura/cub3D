@@ -23,7 +23,6 @@ int	initiate_map_struct_open_file(const char *file_name, t_map_size *map_size)
     map_size->map_error = 0;
     map_size->player_flag = 0;
 	map_size->strings_before_map = 0;
-    map_size->err = NO_ERROR;
     fd = open(file_name, O_RDONLY);
     if (fd == -1)
 		error_message_exit(ERR_OPEN);
@@ -56,7 +55,7 @@ int 	is_string_maze_part_of_map(char *str, t_map_size *map_size)
 		return (FLS);
 	while (str[i] != '\0')
 	{
-		if (is_maze_number(str[i]) == TRU || is_maze_space(str[i]) == TRU) ///  not sure if within maze  can be other spaces except 32 space
+		if (is_maze_number(str[i]) == TRU || is_maze_space(str[i]) == TRU)
 			i++;
 		else if (is_maze_player(str[i], str[i + 1]) == TRU)
 		{
@@ -71,13 +70,13 @@ int 	is_string_maze_part_of_map(char *str, t_map_size *map_size)
 
 int get_longest_col_increase_row(char *str, t_map_size *map_size)
 {
-	if (str == NULL || *str == '\0')
-		error_message_exit(ERR_MAP);
 	if (map_size->len_cols < ft_strlen(str))
             map_size->len_cols = ft_strlen(str);
         map_size->len_rows++;
     return (0);
 }
+
+//◦ map: element can NOT be separated by space(s).
 
 t_map_size initiate_map_size(const char *file_name)
 {
@@ -88,7 +87,7 @@ t_map_size initiate_map_size(const char *file_name)
 
 	res = 1;
 	fd = initiate_map_struct_open_file(file_name, &map_size);
-	while (res > 0 && map_size.err == NO_ERROR)
+	while (res > 0)
 	{
 		res = exam_get_next_line(fd, &str);
 		if (res == 0)
@@ -97,6 +96,8 @@ t_map_size initiate_map_size(const char *file_name)
 			get_longest_col_increase_row(str, &map_size);
 		else if (map_size.len_rows == 0)
 			map_size.strings_before_map++;
+		else if (map_size.len_rows > 0 && is_string_maze_part_of_map(str, &map_size) == FLS)
+			error_message_exit(ERR_MAP);
 	}
 	if (close(fd) < 0)
 		error_message_exit(ERR_CLOSE);
