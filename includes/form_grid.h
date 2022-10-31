@@ -9,7 +9,7 @@
 #ifndef form_grid_h
 #define form_grid_h
 
-#include "form_gamestate.h"
+#include "parsing_gamestate.h"
 
 int	form_grid(int fd, t_game_state *gstate);
 

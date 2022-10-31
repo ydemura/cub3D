@@ -5,13 +5,16 @@
 //  Created by Yuliia Demura on 17/03/2021.
 //
 
-#include "form_gamestate.h"
+#include "parsing_gamestate.h"
+
+
 
 int main(int argc, const char *argv[])
 {
-	t_game_state	game_state;
-	if (argc != 2)
-		error_message_exit(ERR_INCOMPLETE_INFORMATION);
-    game_state = form_gamestate(argv[1]);
+	t_parsing_result parsing_result;
+
+	parsing_result = parsing(argv, argc);
+	
+	//do your tghing here :)
 	return (0);
 }

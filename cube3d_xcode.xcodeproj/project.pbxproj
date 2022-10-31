@@ -10,7 +10,7 @@
 		32254A5A2909479300F1FD97 /* colours.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A592909479300F1FD97 /* colours.c */; };
 		32254A5C2909479A00F1FD97 /* error_handling.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A5B2909479A00F1FD97 /* error_handling.c */; };
 		32254A5E290947A100F1FD97 /* exam_gnl.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A5D290947A100F1FD97 /* exam_gnl.c */; };
-		32254A60290947AC00F1FD97 /* form_gamestate.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A5F290947AC00F1FD97 /* form_gamestate.c */; };
+		32254A60290947AC00F1FD97 /* parsing_gamestate.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A5F290947AC00F1FD97 /* parsing_gamestate.c */; };
 		32254A62290947B200F1FD97 /* form_data_structure.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A61290947B200F1FD97 /* form_data_structure.c */; };
 		32254A64290947B900F1FD97 /* initiate_map_size.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A63290947B900F1FD97 /* initiate_map_size.c */; };
 		32254A66290947C200F1FD97 /* initiate_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 32254A65290947C200F1FD97 /* initiate_data.c */; };
@@ -91,7 +91,7 @@
 		32254A592909479300F1FD97 /* colours.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = colours.c; path = src/colours.c; sourceTree = SOURCE_ROOT; };
 		32254A5B2909479A00F1FD97 /* error_handling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = error_handling.c; path = src/error_handling.c; sourceTree = SOURCE_ROOT; };
 		32254A5D290947A100F1FD97 /* exam_gnl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = exam_gnl.c; path = src/exam_gnl.c; sourceTree = SOURCE_ROOT; };
-		32254A5F290947AC00F1FD97 /* form_gamestate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = form_gamestate.c; path = src/form_gamestate.c; sourceTree = SOURCE_ROOT; };
+		32254A5F290947AC00F1FD97 /* parsing_gamestate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = parsing_gamestate.c; path = src/parsing_gamestate.c; sourceTree = SOURCE_ROOT; };
 		32254A61290947B200F1FD97 /* form_data_structure.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = form_data_structure.c; path = src/form_data_structure.c; sourceTree = SOURCE_ROOT; };
 		32254A63290947B900F1FD97 /* initiate_map_size.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = initiate_map_size.c; path = src/initiate_map_size.c; sourceTree = SOURCE_ROOT; };
 		32254A65290947C200F1FD97 /* initiate_data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = initiate_data.c; path = src/initiate_data.c; sourceTree = SOURCE_ROOT; };
@@ -149,7 +149,7 @@
 		32DC7BAE290AF8F60067D21D /* form_grid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = form_grid.h; path = includes/form_grid.h; sourceTree = SOURCE_ROOT; };
 		32DC7BAF290AF9040067D21D /* form_grid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = form_grid.c; path = src/form_grid.c; sourceTree = SOURCE_ROOT; };
 		32DC7BB12910037F0067D21D /* small_map_for_reading.cub */ = {isa = PBXFileReference; lastKnownFileType = text; name = small_map_for_reading.cub; path = maps_variations/small_map_for_reading.cub; sourceTree = "<group>"; };
-		32DC7BB229102E9E0067D21D /* form_gamestate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = form_gamestate.h; path = includes/form_gamestate.h; sourceTree = SOURCE_ROOT; };
+		32DC7BB229102E9E0067D21D /* parsing_gamestate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = parsing_gamestate.h; path = includes/parsing_gamestate.h; sourceTree = SOURCE_ROOT; };
 		32DC7BB329102EAA0067D21D /* check_map_borders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = check_map_borders.h; path = includes/check_map_borders.h; sourceTree = SOURCE_ROOT; };
 		32DC7BB429102EB30067D21D /* check_map_borders.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = check_map_borders.c; path = src/check_map_borders.c; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -189,8 +189,8 @@
 				322549C229081A2000F1FD97 /* utils */,
 				322549C429081A2E00F1FD97 /* get_data_from_input */,
 				322549C329081A2600F1FD97 /* map */,
-				32DC7BB229102E9E0067D21D /* form_gamestate.h */,
-				32254A5F290947AC00F1FD97 /* form_gamestate.c */,
+				32DC7BB229102E9E0067D21D /* parsing_gamestate.h */,
+				32254A5F290947AC00F1FD97 /* parsing_gamestate.c */,
 				32254A67290947C900F1FD97 /* main.c */,
 			);
 			path = cube3d_xcode;
@@ -384,7 +384,7 @@
 				32254ABA2909481F00F1FD97 /* ft_calloc.c in Sources */,
 				32254AA62909481F00F1FD97 /* ft_strncmp.c in Sources */,
 				32254AB72909481F00F1FD97 /* get_next_line_utils.c in Sources */,
-				32254A60290947AC00F1FD97 /* form_gamestate.c in Sources */,
+				32254A60290947AC00F1FD97 /* parsing_gamestate.c in Sources */,
 				32254AC62909481F00F1FD97 /* ft_strlen.c in Sources */,
 				32254AA12909481F00F1FD97 /* ft_strmapi.c in Sources */,
 				32254AC22909481F00F1FD97 /* ft_strlcpy.c in Sources */,

@@ -9,7 +9,7 @@
 #ifndef map_utils_h
 #define map_utils_h
 
-#include "form_gamestate.h"
+#include "parsing_gamestate.h"
 
 int	is_maze_number(char c);
 int	is_map_char(char c);

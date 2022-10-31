@@ -1,5 +1,5 @@
 //
-//  form_gamestate.h
+//  parsing_gamestate.h
 //  cubic_xcode_part
 //
 //  Created by Julia Demura on 21/10/2022.
@@ -21,6 +21,7 @@ typedef struct  s_player
 	int y_view_direction;
 	double x_camera;
 	double y_camera;
+	int pa;
 }               t_player;
 
 typedef struct  s_game_state
@@ -53,6 +54,8 @@ typedef struct  s_parsing_result
 	int fd_we;
 	
 	//player section, also can be in player structure
+	t_player player;// - struct
+	// or:
 	int player_x;
 	int player_y;
 	int x_view_direction;
@@ -62,6 +65,6 @@ typedef struct  s_parsing_result
 	int pa; // not initialized
 }               t_parsing_result;
 
-t_game_state	form_gamestate(const char *file_name);
+t_parsing_result parsing(const char **argv, int argc);
 
 #endif /* form_gamestate_h */

@@ -7,7 +7,7 @@
 //
 
 #include "initiate_data.h"
-#include "form_gamestate.h"
+#include "parsing_gamestate.h"
 #include <stdlib.h>
 
 t_flags initiate_flags(void)

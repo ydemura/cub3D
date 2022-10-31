@@ -76,8 +76,6 @@ int get_longest_col_increase_row(char *str, t_map_size *map_size)
     return (0);
 }
 
-//◦ map: element can NOT be separated by space(s).
-
 t_map_size initiate_map_size(const char *file_name)
 {
 	int fd;
