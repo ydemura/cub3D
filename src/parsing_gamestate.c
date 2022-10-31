@@ -1,10 +1,14 @@
-//
-//  form_gamestate.c
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 21/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_gamestate.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:56 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:52:57 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "parsing_gamestate.h"
 #include "form_data_structure.h"

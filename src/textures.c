@@ -1,10 +1,14 @@
-//
-//  textures.c
-//  cubic
-//
-//  Created by Yuliia Demura on 19/04/2021.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:53:01 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:53:03 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "textures.h"
 #include "colours.h"

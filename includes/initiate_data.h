@@ -1,15 +1,19 @@
-//
-//  initiate_struct.h
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 21/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initiate_data.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:49:35 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:49:52 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef initiate_struct_h
-#define initiate_struct_h
+#ifndef INITIATE_STRUCT_H
+# define INITIATE_STRUCT_H
 
-#include "error_handling.h"
+# include "error_handling.h"
 
 typedef enum    e_kind
 {
@@ -44,4 +48,4 @@ typedef struct  s_data
 
 void initiate_data_srtuct(t_data *data);
 
-#endif /* initiate_struct_h */
+# endif /* initiate_struct_h */

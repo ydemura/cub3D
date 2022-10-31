@@ -1,16 +1,20 @@
-//
-//  textures.h
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 25/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:51:15 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:51:28 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef textures_h
-#define textures_h
+#ifndef TEXTURES_H
+# define TEXTURES_H
 
-#include "initiate_data.h"
+# include "initiate_data.h"
 
 int    textures_collect(char *s, t_data *data);
 
-#endif /* textures_h */
+# endif /* textures_h */

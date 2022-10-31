@@ -1,10 +1,14 @@
-//
-//  form_data_structure.c
-//  tests
-//
-//  Created by Yuliia Demura on 05/04/2021.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   form_data_structure.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:11 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:52:13 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "form_data_structure.h"
 #include "colours.h"

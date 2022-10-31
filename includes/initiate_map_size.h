@@ -1,15 +1,19 @@
-//
-//  initiate_map_size.h
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 25/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initiate_map_size.h                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:50:04 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:50:20 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef initiate_map_size_h
-#define initiate_map_size_h
+#ifndef INITIATE_MAP_SIZE_H
+# define INITIATE_MAP_SIZE_H
 
-#include "error_handling.h"
+# include "error_handling.h"
 
 typedef	struct 	s_map_size
 {
@@ -27,4 +31,4 @@ typedef	struct 	s_map_size
 
 t_map_size initiate_map_size(const char *file_name);
 
-#endif /* initiate_map_size_h */
+# endif /* initiate_map_size_h */

@@ -1,17 +1,21 @@
-//
-//  parsing_gamestate.h
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 21/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_gamestate.h                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:50:46 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:51:07 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef form_gamestate_h
-#define form_gamestate_h
+#ifndef FORM_GAMESTATE_H
+# define FORM_GAMESTATE_H
 
-#include "error_handling.h"
-#include "initiate_data.h"
-#include "initiate_map_size.h"
+# include "error_handling.h"
+# include "initiate_data.h"
+# include "initiate_map_size.h"
 
 typedef struct  s_player
 {
@@ -67,4 +71,4 @@ typedef struct  s_parsing_result
 
 t_parsing_result parsing(const char **argv, int argc);
 
-#endif /* form_gamestate_h */
+# endif /* form_gamestate_h */

@@ -1,10 +1,14 @@
-//
-//  check_map_borders.c
-//  cubic
-//
-//  Created by Yuliia Demura on 26/10/2022.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map_borders.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:51:39 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:51:45 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "check_map_borders.h"
 #include "initiate_data.h"

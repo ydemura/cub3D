@@ -1,10 +1,14 @@
-//
-//  colours.c
-//  tests
-//
-//  Created by Yuliia Demura on 4/22/21.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colours.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:51:55 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "colours.h"
 #include "map_utils.h"

@@ -1,10 +1,14 @@
-//
-//  initiate_struct.c
-//  tests
-//
-//  Created by Yuliia Demura on 19/04/2021.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initiate_data.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:25 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:52:27 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "initiate_data.h"
 #include "parsing_gamestate.h"

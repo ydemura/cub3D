@@ -1,16 +1,20 @@
-//
-//  form_grid.h
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 25/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   form_grid.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:48:46 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:49:06 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef form_grid_h
-#define form_grid_h
+#ifndef FORM_GRID_H
+# define FORM_GRID_H
 
-#include "parsing_gamestate.h"
+# include "parsing_gamestate.h"
 
 int	form_grid(int fd, t_game_state *gstate);
 
-#endif /* boarders_h */
+# endif /* boarders_h */
