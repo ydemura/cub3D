@@ -40,7 +40,7 @@ int	is_maze_space(char c)
 int	is_maze_player(char c, char next)
 {
 	if ((c == 'N' || c == 'S' || c == 'E' || c == 'W')
-			&& (is_maze_number(next) || is_maze_space(next)))
+		&& (is_maze_number(next) || is_maze_space(next)))
 		return (TRU);
 	else
 		return (FLS);

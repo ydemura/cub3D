@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:56 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:57 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/10/31 19:55:58 by yuliia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	camera_resolution(t_game_state *gstate)
 
 t_game_state	form_gamestate(const char *file_name)
 {
-	int fd;
-	t_game_state game_state;
+	int				fd;
+	t_game_state	game_state;
 
 	game_state.map_size = initiate_map_size(file_name);
 	fd = open(file_name, O_RDONLY);
@@ -64,10 +64,10 @@ void	pack_parsing(t_game_state *gstate, t_parsing_result *parsing)
 	parsing->pa = gstate->player.pa; //pa is not initialised
 }
 
-t_parsing_result parsing(const char **argv, int argc)
+t_parsing_result	parsing(const char **argv, int argc)
 {
-	t_game_state	game_state;
-	t_parsing_result parsing;
+	t_game_state		game_state;
+	t_parsing_result	parsing;
 
 	if (argc != 2)
 		error_message_exit(ERR_INCOMPLETE_INFORMATION);

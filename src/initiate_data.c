@@ -14,9 +14,9 @@
 #include "parsing_gamestate.h"
 #include <stdlib.h>
 
-t_flags initiate_flags(void)
+t_flags	initiate_flags(void)
 {
-	t_flags flags;
+	t_flags	flags;
 
 	flags.flag_no = 0;
 	flags.flag_ea = 0;
@@ -28,9 +28,9 @@ t_flags initiate_flags(void)
 	return (flags);
 }
 
-void initiate_data_srtuct(t_data *data)
+void	initiate_data_srtuct(t_data *data)
 {
-    data->err = NO_ERROR;
+	data->err = NO_ERROR;
 	data->fd_no = -1;
 	data->fd_so = -1;
 	data->fd_ea = -1;

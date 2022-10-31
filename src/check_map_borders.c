@@ -24,7 +24,7 @@ int	is_neibor_wall_floor(t_grid *grid, int ri, int ci)
 		return (0);
 }
 
-int is_all_neibors_wall_floor(t_grid *grid, int ri, int ci)
+int	is_all_neibors_wall_floor(t_grid *grid, int ri, int ci)
 {
 	int	find_walls;
 
@@ -44,8 +44,8 @@ int is_all_neibors_wall_floor(t_grid *grid, int ri, int ci)
 
 int	check_map_for_boarders(t_grid *grid)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -60,5 +60,5 @@ int	check_map_for_boarders(t_grid *grid)
 		}
 		i++;
 	}
-	return 0;
+	return (0);
 }

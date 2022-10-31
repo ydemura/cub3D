@@ -34,12 +34,10 @@ typedef struct  s_game_state
 	t_data		data;
 	t_player	player;
 	char		**map;
-	
 }               t_game_state;
 
 typedef struct  s_parsing_result
 {
-	
 	//map
 	char	**map;
 	

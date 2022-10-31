@@ -38,7 +38,7 @@ typedef struct  s_data
 {
 	t_error_handling err;
 	t_flags flags;
-	int fd_no; //need to be closed later, pass it to algoritn opened!
+	int fd_no;
 	int fd_so;
 	int fd_ea;
 	int fd_we;

@@ -22,10 +22,10 @@ typedef	struct 	s_map_size
 	int map_error;
 	int player_flag;
 	int	strings_before_map;
-
 }				t_map_size;
 
-//open file, check how many rows and cols I need to malloc further, check if there is only 1 player flag N within map
+//open file, check how many rows and cols I need to malloc further,
+//check if there is only 1 player flag N within map
 // exits in case of malloc/read/open fails.
 //exits in case there is no player or > 1 player
 

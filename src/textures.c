@@ -35,9 +35,9 @@ int	str_cmpr_till_n(const char *str, const char *example, int n)
 	return (TRU);
 }
 
-int		collect_path_open_fd(char *str)
+int	collect_path_open_fd(char *str)
 {
-	int fd;
+	int	fd;
 
 	while (is_maze_space(*str))
 		str++;
@@ -49,27 +49,26 @@ int		collect_path_open_fd(char *str)
 		//error_message_exit(ERR_OPEN); -- UNCOMMENT later
 	}
 	// what if texture files are same and if I open opened file what will be/?
-	
     return (fd);
 }
 
- void	pick_identifier(char *str, t_data *data)
+void	pick_identifier(char *str, t_data *data)
 {
 	if (str_cmpr_till_n(str, "NO", 2))
-    {
+	{
 		data->fd_no = collect_path_open_fd(str + 2);
 		data->flags.flag_no++;
-    }
+	}
 	else if (str_cmpr_till_n(str, "WE", 2))
-    {
+	{
 		data->fd_we = collect_path_open_fd(str + 2);
 		data->flags.flag_we++;
-    }
+	}
 	else if (str_cmpr_till_n(str, "EA", 2))
-    {
+	{
 		data->fd_ea = collect_path_open_fd(str + 2);
 		data->flags.flag_ea++;
-    }
+	}
 	else if (str_cmpr_till_n(str, "SO", 2))
 	{
 		data->fd_so = collect_path_open_fd(str + 2);
@@ -77,13 +76,13 @@ int		collect_path_open_fd(char *str)
 	}
 }
 
-int    textures_collect(char *str, t_data *data)
+int	textures_collect(char *str, t_data *data)
 {
-    int i;
-    
-    i = 0;
+	int	i;
+
+	i = 0;
 	if (str_cmpr_till_n(str, "NO", 2) || str_cmpr_till_n(str, "WE", 2)
-			|| str_cmpr_till_n(str, "EA", 2) || str_cmpr_till_n(str, "SO", 2))
+		|| str_cmpr_till_n(str, "EA", 2) || str_cmpr_till_n(str, "SO", 2))
 		i += 2;
 	else
 		error_message_exit(ERR_ELEMENT);

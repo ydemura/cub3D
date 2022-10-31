@@ -17,13 +17,13 @@
 #include "map_utils.h"
 #include <stdlib.h>
 
-int 	is_string_maze(char *str)
+int	is_string_maze(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-    if (str == NULL || str[0] == '\0')
-        return (FLS);
+	if (str == NULL || str[0] == '\0')
+		return (FLS);
 	while (str[i] != '\0')
 	{
 		if (is_maze_number(str[i]) == TRU || is_maze_space(str[i]) == TRU)
@@ -36,25 +36,25 @@ int 	is_string_maze(char *str)
 	return (TRU);
 }
 
-void 	is_all_flags_collected(t_data *data)
+void	is_all_flags_collected(t_data *data)
 {
-    if (data->flags.flag_we == 1 && data->flags.flag_so == 1 &&
-        data->flags.flag_ea == 1 && data->flags.flag_no == 1 &&
-		data->flags.flag_f == 1 && data->flags.flag_c == 1)
+	if (data->flags.flag_we == 1 && data->flags.flag_so == 1
+		&& data->flags.flag_ea == 1 && data->flags.flag_no == 1
+		&& data->flags.flag_f == 1 && data->flags.flag_c == 1)
 	{
-        data->flags.all_flags_collected = 1;
+		data->flags.all_flags_collected = 1;
 	}
-	else if (data->flags.flag_we > 1 || data->flags.flag_so > 1 ||
-             data->flags.flag_ea > 1 || data->flags.flag_no > 1 ||
-			 data->flags.flag_f > 1 || data->flags.flag_c > 1)
+	else if (data->flags.flag_we > 1 || data->flags.flag_so > 1
+		|| data->flags.flag_ea > 1 || data->flags.flag_no > 1
+		|| data->flags.flag_f > 1 || data->flags.flag_c > 1)
 	{
 		error_message_exit(ERR_DUPLICATE_ELEMENT);
 	}
-    else
-        data->flags.all_flags_collected = 0;
+	else
+		data->flags.all_flags_collected = 0;
 }
 
-int   get_texture_color(char *str, t_data *data)
+int	get_texture_color(char *str, t_data *data)
 {
 	while (*str != '\0' && is_maze_space(*str) == TRU)
 		str++;
@@ -67,36 +67,36 @@ int   get_texture_color(char *str, t_data *data)
 	return (0);
 }
 
-int    pars_received_string(t_data *data, char *buff)
+int	pars_received_string(t_data *data, char *buff)
 {
-    if (data->flags.all_flags_collected == 0 && is_string_maze(buff) == 1)
+	if (data->flags.all_flags_collected == 0 && is_string_maze(buff) == 1)
 		error_message_exit(ERR_INCOMPLETE_INFORMATION);
-    if (get_texture_color(buff, data) != 0)
-        return (data->err);
-    is_all_flags_collected(data);
-    return (0);
+	if (get_texture_color(buff, data) != 0)
+		error_message_exit(ERR_INCOMPLETE_INFORMATION);
+	is_all_flags_collected(data);
+	return (0);
 }
 
-int        form_data_structure(int fd, t_map_size *mp_size, t_data *data)
+int	form_data_structure(int fd, t_map_size *mp_size, t_data *data)
 {
-	char 	*buff;
+	char	*buff;
 	int		res;
 
 	initiate_data_srtuct(data);
 	res = 1;
-    while (res > 0 && mp_size->strings_before_map > 0)
+	while (res > 0 && mp_size->strings_before_map > 0)
 	{
-        if (data->err != NO_ERROR)
+		if (data->err != NO_ERROR)
 			error_message_exit(ERR_MAP);
 		res = exam_get_next_line(fd, &buff);
 		if (buff != NULL)
 		{
-            pars_received_string(data, buff);
-            free(buff);
+			pars_received_string(data, buff);
+			free(buff);
 		}
 		mp_size->strings_before_map--;
 	}
-    if (data->flags.all_flags_collected != 1)
-        data->err = ERR_INCOMPLETE_INFORMATION;
+	if (data->flags.all_flags_collected != 1)
+		data->err = ERR_INCOMPLETE_INFORMATION;
 	return (0);
 }
