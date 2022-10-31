@@ -12,10 +12,6 @@ int main(int argc, const char *argv[])
 	t_game_state	game_state;
 	if (argc != 2)
 		error_message_exit(ERR_INCOMPLETE_INFORMATION);
-    form_gamestate(&game_state, argv[1]);
-
-    if (game_state.data.err == NO_ERROR)
-        return (0);
-    else
-        return (1);
+    game_state = form_gamestate(argv[1]);
+	return (0);
 }

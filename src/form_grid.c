@@ -90,21 +90,21 @@ int	form_grid(int fd, t_game_state *gstate)
 	gstate->map = malloc_int_arr(gstate->map_size.len_rows, gstate->map_size.len_cols);
 	grid.ri = 0;
 	grid.ci = 0;
-	while (grid.ri < gstate->map_size.len_rows)
+	grid.arr = gstate->map;
+	grid.rn = gstate->map_size.len_rows;
+	grid.cn = gstate->map_size.len_cols;
+	grid.max_ri = gstate->map_size.len_rows - 1;
+	grid.max_ci = gstate->map_size.len_cols - 1;
+	while (grid.ri < grid.rn)
 	{
 		grid.ci = 0;
-		while (grid.ci < gstate->map_size.len_cols)
+		while (grid.ci <= grid.cn)
 		{
 			fill_grid(fd, &grid, gstate);
 			grid.ci++;
 		}
 		grid.ri++;
 	}
-	grid.arr = gstate->map;
-	grid.rn = gstate->map_size.len_rows;
-	grid.cn = gstate->map_size.len_cols;
-	grid.max_ri = gstate->map_size.len_rows - 1;
-	grid.max_ci = gstate->map_size.len_cols - 1;
 	check_map_for_boarders(&grid);
 	return (0);
 }
