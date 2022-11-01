@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "libft.h": "c",
+        "get_next_line.h": "c",
+        "complex": "c"
+    }
+}
