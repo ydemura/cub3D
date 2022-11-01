@@ -59,7 +59,7 @@ void	pack_parsing(t_game_state *gstate, t_parsing_result *parsing)
 	parsing->player_y = gstate->player.y;
 	parsing->x_view_direction = gstate->player.x_view_direction;
 	parsing->y_view_direction = gstate->player.y_view_direction;
-	parsing->x_camera= gstate->player.x_camera;
+	parsing->x_camera = gstate->player.x_camera;
 	parsing->y_camera = gstate->player.y_camera;
 	parsing->pa = gstate->player.pa; //pa is not initialised
 }

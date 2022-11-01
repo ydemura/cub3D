@@ -17,7 +17,7 @@
 # include "initiate_data.h"
 # include "initiate_map_size.h"
 
-typedef struct  s_player
+typedef struct  s_plr
 {
 	int x;
 	int y;
@@ -26,13 +26,13 @@ typedef struct  s_player
 	double x_camera;
 	double y_camera;
 	int pa;
-}               t_player;
+}               t_plr;
 
 typedef struct  s_game_state
 {
 	t_map_size	map_size;
 	t_data		data;
-	t_player	player;
+	t_plr		player;
 	char		**map;
 }               t_game_state;
 
@@ -56,7 +56,7 @@ typedef struct  s_parsing_result
 	int fd_we;
 	
 	//player section, also can be in player structure
-	t_player player;// - struct
+	t_plr player;// - struct
 	// or:
 	int player_x;
 	int player_y;

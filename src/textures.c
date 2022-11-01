@@ -41,13 +41,11 @@ int	collect_path_open_fd(char *str)
 
 	while (is_maze_space(*str))
 		str++;
-	str += 2;
+	str += 1;
 	fd = open(str, O_RDONLY);
+	//fd = 1; // for test purpose as I dont have textures!
 	if (fd < 0)
-	{
-		fd = 1; // for test purpose as I dont have textures!
-		//error_message_exit(ERR_OPEN); -- UNCOMMENT later
-	}
+		error_message_exit(ERR_OPEN);
 	// what if texture files are same and if I open opened file what will be/?
     return (fd);
 }
