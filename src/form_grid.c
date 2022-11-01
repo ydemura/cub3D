@@ -1,7 +1,14 @@
-//form_grid.c
-
-//cube3d
-//27.10.2022
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   form_grid.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:18 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:52:20 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "form_grid.h"
 #include "check_map_borders.h"
@@ -12,10 +19,10 @@
 #include <sys/uio.h>
 #include <unistd.h>
 
-char 	**malloc_int_arr(int row, int col)
+char	**malloc_arr(int row, int col)
 {
-	char **arr;
-	int i;
+	char	**arr;
+	int		i;
 
 	arr = malloc(sizeof(char *) * (row + 1));
 	if (arr == NULL)
@@ -33,7 +40,7 @@ char 	**malloc_int_arr(int row, int col)
 	return (arr);
 }
 
-void	set_player(char c, t_grid *grid, t_game_state *gstate)
+void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 {
 	gstate->map[grid->ri][grid->ci] = FLOOR;
 	gstate->player.x = grid->ci;
@@ -72,25 +79,32 @@ void	fill_grid(int fd, t_grid *grid, t_game_state *gstate)
 		gstate->map[grid->ri][grid->ci] = FLOOR;
 	else if (grid->c == '1')
 		gstate->map[grid->ri][grid->ci] = WALL;
-	else if (is_maze_space(grid->c)) //still not sure if this can be only ' ' or any space
+	else if (is_maze_space(grid->c))///still not sure if this can be only ' ' or any space
 		gstate->map[grid->ri][grid->ci] = EMPTY;
-	else if (grid->c == 'N' || grid->c == 'S' || grid->c == 'E' || grid->c == 'W')
-		set_player(grid->c, grid, gstate);
+	else if (grid->c == 'N' || grid->c == 'S'
+		|| grid->c == 'E' || grid->c == 'W')
+		set_plr(grid->c, grid, gstate);
 	else
 		error_message_exit(ERR_MAP);
 }
 
+void	init_grid(t_game_state *gstate, t_grid *grid)
+{
+	grid->ri = 0;
+	grid->ci = 0;
+	grid->arr = gstate->map;
+	grid->rn = gstate->map_size.len_rows;
+	grid->cn = gstate->map_size.len_cols;
+	grid->next_line_flag = 0;
+}
+
 int	form_grid(int fd, t_game_state *gstate)
 {
-	t_grid grid;
+	t_grid	grid;
 
- 	gstate->map = malloc_int_arr(gstate->map_size.len_rows, gstate->map_size.len_cols);
-	grid.ri = 0;
-	grid.ci = 0;
-	grid.arr = gstate->map;
-	grid.rn = gstate->map_size.len_rows;
-	grid.cn = gstate->map_size.len_cols;
-	grid.next_line_flag = 0;
+	gstate->map = malloc_arr(gstate->map_size.len_rows,
+			gstate->map_size.len_cols);
+	init_grid(gstate, &grid);
 	while (grid.ri < grid.rn && grid.c != '\0')
 	{
 		grid.ci = 0;

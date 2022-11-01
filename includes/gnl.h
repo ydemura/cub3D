@@ -1,16 +1,20 @@
-//
-//  gnl.h
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 25/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:49:10 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:49:30 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef gnl_h
-#define gnl_h
+#ifndef GNL_H
+# define GNL_H
 
-#include "libft.h"
-#include "error_handling.h"
+# include "libft.h"
+# include "error_handling.h"
 
 typedef struct s_gnl
 {
@@ -23,4 +27,4 @@ typedef struct s_gnl
 
 int		exam_get_next_line(int fd, char **line);
 
-#endif /* gnl_h */
+# endif /* gnl_h */

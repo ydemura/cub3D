@@ -1,18 +1,22 @@
-//
-//  initiate_struct.c
-//  tests
-//
-//  Created by Yuliia Demura on 19/04/2021.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initiate_data.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:25 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:52:27 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "initiate_data.h"
-#include "form_gamestate.h"
+#include "parsing_gamestate.h"
 #include <stdlib.h>
 
-t_flags initiate_flags(void)
+t_flags	initiate_flags(void)
 {
-	t_flags flags;
+	t_flags	flags;
 
 	flags.flag_no = 0;
 	flags.flag_ea = 0;
@@ -24,9 +28,9 @@ t_flags initiate_flags(void)
 	return (flags);
 }
 
-void initiate_data_srtuct(t_data *data)
+void	initiate_data_srtuct(t_data *data)
 {
-    data->err = NO_ERROR;
+	data->err = NO_ERROR;
 	data->fd_no = -1;
 	data->fd_so = -1;
 	data->fd_ea = -1;

@@ -1,13 +1,17 @@
-//
-//  check_map_borders.h
-//  cubic_xcode_part
-//
-//  Created by Julia Demura on 25/10/2022.
-//  Copyright © 2022 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map_borders.h                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:45:41 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:46:31 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef check_map_borders_h
-#define check_map_borders_h
+#ifndef CHECK_MAP_BORDERS_H
+# define CHECK_MAP_BORDERS_H
 
 typedef struct
 {
@@ -22,4 +26,4 @@ typedef struct
 
 int	check_map_for_boarders(t_grid *grid);
 
-#endif /* check_map_borders_h */
+# endif /* check_map_borders_h */

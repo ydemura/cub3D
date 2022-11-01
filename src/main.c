@@ -1,17 +1,47 @@
-//
-//  main.c
-//  cubik_xcode_part
-//
-//  Created by Yuliia Demura on 17/03/2021.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:41 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:52:42 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "form_gamestate.h"
+#include "parsing_gamestate.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-int main(int argc, const char *argv[])
+void	free_array(char **array)
 {
-	t_game_state	game_state;
-	if (argc != 2)
-		error_message_exit(ERR_INCOMPLETE_INFORMATION);
-    game_state = form_gamestate(argv[1]);
+	int	i;
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+	}
+	free(array);
+}
+
+void	close_texture_files(t_parsing_result *prs)
+{
+	close(prs->fd_so);
+	close(prs->fd_no);
+	close(prs->fd_ea);
+	close(prs->fd_we);
+	
+}
+
+
+int	main(int argc, const char *argv[])
+{
+	t_parsing_result	parsing_result;
+
+	parsing_result = parsing(argv, argc);
+	
+	//do your tghing here :)
 	return (0);
 }

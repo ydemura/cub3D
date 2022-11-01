@@ -1,19 +1,24 @@
-//
-//  exam_gnl.c
-//  get_next_line
-//
-//  Created by Julia on 24.01.2021.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exam_gnl.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:05 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:52:06 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "gnl.h"
-# include <unistd.h>
-# include <stdlib.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-char *m_realloc(char *str, int len)
+char	*m_realloc(char *str, int len)
 {
-	int i;
-	char *new_str;
+	int		i;
+	char	*new_str;
+
 	i = 0;
 	new_str = malloc((len + 1) * sizeof(char));
 	if (new_str == NULL)
@@ -40,9 +45,9 @@ void	initiate_gnl_struct(t_gnl *gnl)
 	gnl->temp[gnl->len] = '\0';
 }
 
-int		exam_get_next_line(int fd, char **line)
+int	exam_get_next_line(int fd, char **line)
 {
-	t_gnl gnl;
+	t_gnl	gnl;
 
 	*line = NULL;
 	initiate_gnl_struct(&gnl);

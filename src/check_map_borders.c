@@ -1,10 +1,14 @@
-//
-//  check_map_borders.c
-//  cubic
-//
-//  Created by Yuliia Demura on 26/10/2022.
-//  Copyright © 2021 Yuliia Demura. All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map_borders.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:51:39 by yuliia            #+#    #+#             */
+/*   Updated: 2022/10/31 19:51:45 by yuliia           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "check_map_borders.h"
 #include "initiate_data.h"
@@ -20,7 +24,7 @@ int	is_neibor_wall_floor(t_grid *grid, int ri, int ci)
 		return (0);
 }
 
-int is_all_neibors_wall_floor(t_grid *grid, int ri, int ci)
+int	is_all_neibors_wall_floor(t_grid *grid, int ri, int ci)
 {
 	int	find_walls;
 
@@ -40,8 +44,8 @@ int is_all_neibors_wall_floor(t_grid *grid, int ri, int ci)
 
 int	check_map_for_boarders(t_grid *grid)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -56,5 +60,5 @@ int	check_map_for_boarders(t_grid *grid)
 		}
 		i++;
 	}
-	return 0;
+	return (0);
 }
