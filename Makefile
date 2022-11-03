@@ -7,7 +7,11 @@ SRCS	=	get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c\
 			main.c\
 			keyboard.c\
-			check_position.c
+			check_position.c\
+			draw_ray.c\
+			clean_maps.c\
+			create_items.c\
+			load_maps.c
 
 OBJS	= $(SRCS:.c=.o)
 

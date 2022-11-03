@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/10/31 17:34:46 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/03 20:57:11 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_player
 {
 	int x;
 	int y;
+	int ray[60];
 	double d_x;
 	double d_y;
 	double pa;
@@ -86,8 +87,12 @@ t_vars	*maps_load(t_vars *vars, int where);
 int	close_clik(t_vars *vars);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void create_player(t_vars *vars, int player_x, int player_y);
-void draw_line(t_vars *data, double angle, int line_lenght, long color);
+void draw_angle(t_vars *data, double angle, int line_lenght, long color);
 void	check_position(t_vars *vars);
-float degToRad(int a);
-
+void clean_maps(t_vars *vars);
+int draw_ray(t_vars *data, double angle, long color);
+int check_walls(int x, int y, t_vars *vars);
+void	create_win(t_vars *vars, int x, int y);
+void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color);
+int find_ray_len(int x, int y);
 # endif
