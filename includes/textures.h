@@ -16,5 +16,6 @@
 # include "initiate_data.h"
 
 int	textures_collect(char *s, t_data *data);
+const char	*collect_path(const char *str, const char *extention);
 
 # endif /* textures_h */

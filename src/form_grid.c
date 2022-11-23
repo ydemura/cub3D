@@ -44,6 +44,7 @@ void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 {
 	gstate->map[grid->ri][grid->ci] = FLOOR;
 	gstate->player.x = grid->ci;
+	//gstate->player.pa = 2 * M_PI
 	gstate->player.y = grid->ri;
 	if (c == 'N')
 	{

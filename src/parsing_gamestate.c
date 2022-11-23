@@ -13,6 +13,7 @@
 #include "parsing_gamestate.h"
 #include "form_data_structure.h"
 #include "form_grid.h"
+#include "textures.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -28,6 +29,7 @@ t_game_state	form_gamestate(const char *file_name)
 	int				fd;
 	t_game_state	game_state;
 
+	collect_path(file_name, ".cub");
 	game_state.map_size = initiate_map_size(file_name);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -47,10 +49,11 @@ void	pack_parsing(t_game_state *gstate, t_parsing_result *parsing)
 	parsing->len_cols = gstate->map_size.len_cols;
 	parsing->rgb_floor = gstate->data.rgb_floor;
 	parsing->rgb_ceiling = gstate->data.rgb_ceiling;
-	parsing->fd_no = gstate->data.fd_no;
-	parsing->fd_so = gstate->data.fd_so;
-	parsing->fd_ea = gstate->data.fd_ea;
-	parsing->fd_we = gstate->data.fd_we;
+	
+	parsing->no = gstate->data.no;
+	parsing->so = gstate->data.so;
+	parsing->ea = gstate->data.ea;
+	parsing->we = gstate->data.we;
 	
 	//player
 	parsing->player = gstate->player;

@@ -31,10 +31,10 @@ t_flags	initiate_flags(void)
 void	initiate_data_srtuct(t_data *data)
 {
 	data->err = NO_ERROR;
-	data->fd_no = -1;
-	data->fd_so = -1;
-	data->fd_ea = -1;
-	data->fd_we = -1;
+	data->no = NULL;
+	data->so = NULL;
+	data->ea = NULL;
+	data->we = NULL;
 	data->rgb_floor = 0;
 	data->rgb_ceiling = 0;
 	data->flags = initiate_flags();

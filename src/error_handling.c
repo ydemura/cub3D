@@ -39,5 +39,9 @@ void	error_message_exit(t_error_handling err)
 		printf("close crushed\n");
 	else if (err == ERR_READ)
 		printf("read crushed\n");
+	else if (err == ERR_EXTENTION)
+		printf("wrong extention\n");
+//	else
+//		printf("something went wrong\n");
 	exit(EXIT_FAILURE);
 }

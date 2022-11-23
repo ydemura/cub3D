@@ -53,8 +53,12 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/yuliia/Codam/together_Cube/maps_variations/small_map_for_reading.cub"
+            argument = "/Users/yuliia/Codam/ali_repo/maps_variations/TEST.cub.cub"
             isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/yuliia/Codam/together_Cube/maps_variations/small_map_for_reading.cub"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

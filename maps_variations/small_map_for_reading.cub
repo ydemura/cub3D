@@ -1,17 +1,16 @@
 F  1, 	1 ,	1
-C		 225	,	30  ,	0
+C		 225	,		30  ,	0
 NO ./Users/yuliia/Codam/textures/1.jpeg
 WE	 	./Users/yuliia/Codam/textures/2.jpeg
-EA ./Users/yuliia/Codam/textures/4.jpeg
+
+
+
+EA     ./Users/yuliia/Codam/textures/4.jpeg
 SO ./Users/yuliia/Codam/textures/1.jpeg
 
 
-      1   11111
-   1111111111   11111111
-   10000001    110011
-11110001111     1011
-10000101        111
-100S0101
-11110011
-  100011111
-11111111
+11111
+10001
+10N01
+10001
+11111

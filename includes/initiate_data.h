@@ -38,10 +38,11 @@ typedef struct  s_data
 {
 	t_error_handling err;
 	t_flags flags;
-	int fd_no;
-	int fd_so;
-	int fd_ea;
-	int fd_we;
+	char *no;
+	char *so;
+	char *ea;
+	char *we;
+	
 	unsigned int rgb_floor;
 	unsigned int rgb_ceiling;
 }               t_data;

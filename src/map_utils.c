@@ -30,7 +30,7 @@ int	is_map_char(char c)
 
 int	is_maze_space(char c)
 {
-	if (c == 32 || (c >= 8 && c <= 14))
+	if (c == 32 || (c >= 8 && c <= 14)) //space is a question?
 		return (TRU);
 	else
 		return (FLS);

@@ -49,11 +49,11 @@ typedef struct  s_parsing_result
 	unsigned int rgb_floor;
 	unsigned int rgb_ceiling;
 	
-	//texture opened file descriptors
-	int fd_no;
-	int fd_so;
-	int fd_ea;
-	int fd_we;
+	//textures files
+	char *no;
+	char *so;
+	char *ea;
+	char *we;
 	
 	//player section, also can be in player structure
 	t_plr player;// - struct

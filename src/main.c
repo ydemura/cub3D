@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <stdio.h>
+
 void	free_array(char **array)
 {
 	int	i;
@@ -26,15 +28,6 @@ void	free_array(char **array)
 	free(array);
 }
 
-void	close_texture_files(t_parsing_result *prs)
-{
-	close(prs->fd_so);
-	close(prs->fd_no);
-	close(prs->fd_ea);
-	close(prs->fd_we);
-	
-}
-
 
 int	main(int argc, const char *argv[])
 {
@@ -43,5 +36,6 @@ int	main(int argc, const char *argv[])
 	parsing_result = parsing(argv, argc);
 	
 	//do your tghing here :)
+	printf("done\n");
 	return (0);
 }

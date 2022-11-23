@@ -32,7 +32,8 @@ typedef enum     e_error_handling
 	ERR_MALLOC = 108,
 	ERR_OPEN = 109,
 	ERR_CLOSE = 110,
-	ERR_READ = 111
+	ERR_READ = 111,
+	ERR_EXTENTION = 112
 	
 }                t_error_handling;
 
