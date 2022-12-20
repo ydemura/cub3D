@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   initiate_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:25 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:27 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:30:05 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initiate_data.h"
-#include "parsing_gamestate.h"
+#include "../includes/initiate_data.h"
+#include "../includes/parsing_gamestate.h"
 #include <stdlib.h>
 
 t_flags	initiate_flags(void)
@@ -35,7 +35,7 @@ void	initiate_data_srtuct(t_data *data)
 	data->so = NULL;
 	data->ea = NULL;
 	data->we = NULL;
-	data->rgb_floor = 0;
-	data->rgb_ceiling = 0;
+	data->rgb_floor = -1;
+	data->rgb_ceiling = -1;
 	data->flags = initiate_flags();
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:53:01 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:53:03 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/12 10:57:21 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "textures.h"
-#include "colours.h"
-#include "map_utils.h"
-#include "error_handling.h"
-#include "libft.h"
+#include "../includes/textures.h"
+#include "../includes/colours.h"
+#include "../includes/map_utils.h"
+#include "../includes/error_handling.h"
+#include "../libft/libft.h"
 #include <fcntl.h>
 
 int	str_cmpr_till_n(const char *str, const char *example, int n)
@@ -37,8 +37,8 @@ int	str_cmpr_till_n(const char *str, const char *example, int n)
 
 const char	*collect_path(const char *str, const char *extention)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = (int)ft_strlen(str);
@@ -50,7 +50,7 @@ const char	*collect_path(const char *str, const char *extention)
 		return (str);
 	else
 		error_message_exit(ERR_EXTENTION);
-    return (str);
+	return (str);
 }
 
 void	pick_identifier(char *str, t_data *data, int i)
@@ -79,6 +79,18 @@ void	pick_identifier(char *str, t_data *data, int i)
 		error_message_exit(ERR_ELEMENT_IDENTIFIER);
 }
 
+void	double_check(char *str, t_data *data)
+{
+	if (str_cmpr_till_n(str, "NO", 2) && data->no != NULL)
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
+	else if (str_cmpr_till_n(str, "WE", 2) && data->we != NULL)
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
+	else if (str_cmpr_till_n(str, "EA", 2) && data->ea != NULL)
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
+	else if (str_cmpr_till_n(str, "SO", 2) && data->so != NULL)
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
+}
+
 int	textures_collect(char *str, t_data *data)
 {
 	int	i;
@@ -89,6 +101,7 @@ int	textures_collect(char *str, t_data *data)
 		i += 2;
 	else
 		error_message_exit(ERR_ELEMENT);
+	double_check(str, data);
 	if (is_maze_space(str[i]) == FLS)
 		error_message_exit(ERR_ELEMENT);
 	while (is_maze_space(str[i]) == TRU)

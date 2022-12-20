@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:52:50 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:51 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   map_utils.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:52:50 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/20 16:21:08 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_utils.h"
+#include "../includes/map_utils.h"
 
 int	is_maze_number(char c)
 {
@@ -30,7 +30,7 @@ int	is_map_char(char c)
 
 int	is_maze_space(char c)
 {
-	if (c == 32 || (c >= 8 && c <= 14)) //space is a question?
+	if (c == 32 || (c >= 8 && c <= 14))
 		return (TRU);
 	else
 		return (FLS);

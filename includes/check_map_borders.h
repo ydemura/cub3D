@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_borders.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:45:41 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:46:31 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/08 15:08:45 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECK_MAP_BORDERS_H
 # define CHECK_MAP_BORDERS_H
 
-typedef struct
+typedef struct s_grid
 {
 	int		ri;
 	int		ci;
@@ -26,4 +26,4 @@ typedef struct
 
 int	check_map_for_boarders(t_grid *grid);
 
-# endif /* check_map_borders_h */
+#endif /* check_map_borders_h */

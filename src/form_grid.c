@@ -3,21 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   form_grid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:18 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:20 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:12:31 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "form_grid.h"
-#include "check_map_borders.h"
-#include "map_utils.h"
-#include "gnl.h"
+#include "../includes/form_grid.h"
+#include "../includes/check_map_borders.h"
+#include "../includes/map_utils.h"
+#include "../includes/gnl.h"
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <math.h>
+#include "../cub3d.h"
 
 char	**malloc_arr(int row, int col)
 {
@@ -43,29 +48,21 @@ char	**malloc_arr(int row, int col)
 void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 {
 	gstate->map[grid->ri][grid->ci] = FLOOR;
-	gstate->player.x = grid->ci;
-	//gstate->player.pa = 2 * M_PI
-	gstate->player.y = grid->ri;
+	gstate->player.x = grid->ci + 0.5;
+	gstate->player.y = grid->ri + 0.5;
+	gstate->player.hit_x = 0;
+	gstate->player.game_speed = 0.2;
+	gstate->player.hit_x = 0;
 	if (c == 'N')
-	{
-		gstate->player.x_view_direction = grid->ci;
-		gstate->player.y_view_direction = grid->ri - 1;
-	}
+		gstate->player.pa = 1.5 * M_PI;
 	else if (c == 'S')
-	{
-		gstate->player.x_view_direction = grid->ci;
-		gstate->player.y_view_direction = grid->ri + 1;
-	}
+		gstate->player.pa = M_PI * 0.5;
 	else if (c == 'E')
-	{
-		gstate->player.x_view_direction = grid->ci + 1;
-		gstate->player.y_view_direction = grid->ri;
-	}
+		gstate->player.pa = M_PI * 2;
 	else if (c == 'W')
-	{
-		gstate->player.x_view_direction = grid->ci - 1;
-		gstate->player.y_view_direction = grid->ri;
-	}
+		gstate->player.pa = M_PI ;
+	gstate->player.x_view_direction = cos(gstate->player.pa) * 5;
+	gstate->player.y_view_direction = sin(gstate->player.pa) * 5;
 }
 
 void	fill_grid(int fd, t_grid *grid, t_game_state *gstate)
@@ -80,7 +77,7 @@ void	fill_grid(int fd, t_grid *grid, t_game_state *gstate)
 		gstate->map[grid->ri][grid->ci] = FLOOR;
 	else if (grid->c == '1')
 		gstate->map[grid->ri][grid->ci] = WALL;
-	else if (is_maze_space(grid->c))///still not sure if this can be only ' ' or any space
+	else if (is_maze_space(grid->c))
 		gstate->map[grid->ri][grid->ci] = EMPTY;
 	else if (grid->c == 'N' || grid->c == 'S'
 		|| grid->c == 'E' || grid->c == 'W')
@@ -118,7 +115,7 @@ int	form_grid(int fd, t_game_state *gstate)
 		}
 		grid.ri++;
 	}
-	if (grid.next_line_flag != grid.rn)
+	if (grid.next_line_flag != grid.rn - 1)
 		error_message_exit(ERR_MAP);
 	check_map_for_boarders(&grid);
 	return (0);

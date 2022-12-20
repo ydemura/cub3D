@@ -1,0 +1,17 @@
+F  1, 	1 ,	1
+C		 25	,	12  ,	46
+WE  ./textures/space1.png
+NO  ./textures/space2.png
+SO  ./textures/space3.png
+EA  ./textures/space4.png
+
+
+      1   11111
+   1111111111   11111111
+   10000001    110011
+11110001111     1011
+10000101        111
+100S0101
+11110011
+  100011111
+11111111

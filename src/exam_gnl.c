@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exam_gnl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:05 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:06 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:15:47 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnl.h"
+#include "../includes/gnl.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -45,6 +45,12 @@ void	initiate_gnl_struct(t_gnl *gnl)
 	gnl->temp[gnl->len] = '\0';
 }
 
+void	resize(t_gnl	*gnl)
+{
+	gnl->len = gnl->len * 2;
+	gnl->temp = m_realloc(gnl->temp, gnl->len);
+}
+
 int	exam_get_next_line(int fd, char **line)
 {
 	t_gnl	gnl;
@@ -57,14 +63,14 @@ int	exam_get_next_line(int fd, char **line)
 		if (gnl.res == -1)
 			error_message_exit(ERR_READ);
 		else if (*gnl.temp == '\0' && gnl.c == '\n')
+		{
+			free(gnl.temp);
 			return (gnl.res);
+		}	
 		gnl.temp[gnl.conter] = gnl.c;
 		gnl.conter++;
 		if (gnl.conter == gnl.len)
-		{
-			gnl.len = gnl.len * 2;
-			gnl.temp = m_realloc(gnl.temp, gnl.len);
-		}
+			resize(&gnl);
 	}
 	gnl.temp = m_realloc(gnl.temp, gnl.conter);
 	gnl.temp[gnl.conter - 1] = '\0';

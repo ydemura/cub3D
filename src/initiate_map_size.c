@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   initiate_map_size.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:32 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:33 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:17:48 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initiate_map_size.h"
-#include "libft.h"
-#include "gnl.h"
-#include "form_data_structure.h"
-#include "map_utils.h"
+#include "../includes/initiate_map_size.h"
+#include "../libft/libft.h"
+#include "../includes/gnl.h"
+#include "../includes/form_data_structure.h"
+#include "../includes/map_utils.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int	initiate_map_struct_open_file(const char *file_name, t_map_size *map_size)
 {
@@ -50,7 +51,7 @@ void	check_player_flag(char *str, t_map_size *map_size)
 	}
 }
 
-int	is_string_maze_part_of_map(char *str, t_map_size *map_size)
+int	find_map(char *str, t_map_size *map_size)
 {
 	int	i;
 
@@ -74,8 +75,8 @@ int	is_string_maze_part_of_map(char *str, t_map_size *map_size)
 
 int	get_longest_col_increase_row(char *str, t_map_size *map_size)
 {
-	if (map_size->len_cols < ft_strlen(str))
-		map_size->len_cols = ft_strlen(str);
+	if (map_size->len_cols < (int)ft_strlen(str))
+		map_size->len_cols = (int)ft_strlen(str);
 	map_size->len_rows++;
 	return (0);
 }
@@ -92,15 +93,15 @@ t_map_size	initiate_map_size(const char *file_name)
 	while (res > 0)
 	{
 		res = exam_get_next_line(fd, &str);
-		if (res == 0)
-			break ;
-		if (is_string_maze_part_of_map(str, &map_size) == TRU)
+		if (find_map(str, &map_size) == TRU)
 			get_longest_col_increase_row(str, &map_size);
 		else if (map_size.len_rows == 0)
 			map_size.strings_before_map++;
-		else if (map_size.len_rows > 0
-			&& is_string_maze_part_of_map(str, &map_size) == FLS)
+		else if (map_size.len_rows > 0 && find_map(str, &map_size) == FLS)
 			error_message_exit(ERR_MAP);
+		free(str);
+		if (res == 0)
+			break ;
 	}
 	if (close(fd) < 0)
 		error_message_exit(ERR_CLOSE);

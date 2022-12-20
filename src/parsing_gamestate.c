@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing_gamestate.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:52:56 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:55:58 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parsing_gamestate.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:52:56 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/23 18:57:21 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing_gamestate.h"
-#include "form_data_structure.h"
-#include "form_grid.h"
-#include "textures.h"
+#include "../includes/parsing_gamestate.h"
+#include "../includes/form_data_structure.h"
+#include "../includes/form_grid.h"
+#include "../includes/textures.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "../cub3d.h"
 
 void	camera_resolution(t_game_state *gstate)
 {
-	gstate->player.x_camera = 0;
-	gstate->player.y_camera = 0.66;
+	gstate->player.x_camera = cos (gstate->player.pa);
+	gstate->player.y_camera = sin(gstate->player.pa);
 }
 
 t_game_state	form_gamestate(const char *file_name)
@@ -49,22 +50,11 @@ void	pack_parsing(t_game_state *gstate, t_parsing_result *parsing)
 	parsing->len_cols = gstate->map_size.len_cols;
 	parsing->rgb_floor = gstate->data.rgb_floor;
 	parsing->rgb_ceiling = gstate->data.rgb_ceiling;
-	
 	parsing->no = gstate->data.no;
 	parsing->so = gstate->data.so;
 	parsing->ea = gstate->data.ea;
 	parsing->we = gstate->data.we;
-	
-	//player
 	parsing->player = gstate->player;
-	//OR
-	parsing->player_x = gstate->player.x;
-	parsing->player_y = gstate->player.y;
-	parsing->x_view_direction = gstate->player.x_view_direction;
-	parsing->y_view_direction = gstate->player.y_view_direction;
-	parsing->x_camera = gstate->player.x_camera;
-	parsing->y_camera = gstate->player.y_camera;
-	parsing->pa = gstate->player.pa; //pa is not initialised
 }
 
 t_parsing_result	parsing(const char **argv, int argc)
